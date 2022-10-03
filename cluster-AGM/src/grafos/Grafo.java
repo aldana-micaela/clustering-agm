@@ -138,6 +138,18 @@ public class Grafo {
 	public ArrayList<Arista> getAristas() {
 		return aristas;
 	}
+
+	public int[] Vecinos(int i) {
+		// Consulta un vertice y devuelve los vecinos
+		return null;
+	}
+
+	public int vertices() {
+		// TODO Auto-generated method stub
+		return vertices.size();
+	}
+	
+	
 	
 	
 	
