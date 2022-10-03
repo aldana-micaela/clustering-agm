@@ -1,7 +1,8 @@
 package interfaceGrafo;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -9,6 +10,7 @@ import javax.swing.UIManager;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
 import grafos.Grafo;
@@ -53,10 +55,27 @@ public class InterfaceGrafo {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		grafo = new Grafo(50);
+		grafo = new Grafo(5);
+		grafo.crearGrafoCompleto();
 		crearFrame();
 		crearMapa();
 		agregarVertices();
+	}
+	
+	private void crearPoligono() {
+		ArrayList<Coordinate> coor;
+		int n=0;
+		
+		while(n < grafo.getAristas().size()) {
+			
+			coor = grafo.devolverCoordenadasEntreAristas(grafo.devolverArista(n));
+			poligono = new MapPolygonImpl(coor);
+			poligono.getStyle().setColor(Color.RED);
+			mapa.addMapPolygon(poligono);
+			
+			n++;
+		}
+		
 	}
 	
 	private void crearFrame() {
@@ -76,7 +95,7 @@ public class InterfaceGrafo {
 		frame.getContentPane().add(mapa);
 		mapa.setDisplayPosition(coor, 14);
 		mapa.setZoomContolsVisible(false);
-		
+		crearPoligono();
 		
 	}
 	

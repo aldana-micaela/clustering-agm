@@ -13,10 +13,15 @@ public class Grafo {
 
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
+	private ArrayList<Arista> aristas;
+
+
+	int peso=100;
 
 	public Grafo(int n) {
 
 		vertices = new ArrayList<Vertice>();
+		aristas = new ArrayList<Arista>();
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
 
 		for (int i = 0; i < n; i++) {
@@ -62,9 +67,10 @@ public class Grafo {
 		if (verticeInicio != verticeDestino) {
 			listaDeVecinos.get(verticeInicio).add(verticeDestino);
 			listaDeVecinos.get(verticeDestino).add(verticeInicio);
+			
+			aristas.add(new Arista(verticeInicio, verticeDestino, peso));
+			peso -=5;
 		}
-		
-		
 
 	}
 
@@ -91,6 +97,26 @@ public class Grafo {
 		}
 	}
 	
+	public ArrayList<Coordinate> devolverCoordenadasEntreAristas(Arista a) {
+		
+		ArrayList<Coordinate> c= new ArrayList<Coordinate>();
+		int vI= a.verticeInicio;
+		int vD= a.verticeDestino;
+		
+		c.add(vertices.get(vI).getCoordenada());
+		c.add(vertices.get(vI).getCoordenada());
+		c.add(vertices.get(vD).getCoordenada());
+		
+		return c;
+		
+	}
+	
+	public Arista devolverArista(int n) {
+		
+		return aristas.get(n);
+		
+	}
+	
 	public Double getLatitud(int i) {
 		return vertices.get(i).getLatitud();
 
@@ -107,6 +133,10 @@ public class Grafo {
 
 	public ArrayList<HashSet<Integer>> getListaVecinos(){
 	return listaDeVecinos;
+	}
+	
+	public ArrayList<Arista> getAristas() {
+		return aristas;
 	}
 	
 	
