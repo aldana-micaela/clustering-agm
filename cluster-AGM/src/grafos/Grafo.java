@@ -145,8 +145,12 @@ public class Grafo {
 	}
 
 	public int vertices() {
-		// TODO Auto-generated method stub
 		return vertices.size();
+	}
+
+	public double verValor(Integer integer, Integer integer2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
