@@ -67,19 +67,20 @@ public class InterfaceGrafo {
 	
 	private void crearPoligono() {
 		ArrayList<Coordinate> coor;
-		int n=0;
 		
-		while(n < grafo.getAristas().size()) {
-			
-			coor = grafo.devolverCoordenadasEntreAristas(grafo.devolverArista(n));
-			poligono = new MapPolygonImpl(coor);
-			poligono.getStyle().setColor(Color.RED);
-			mapa.addMapPolygon(poligono);
-			
-			n++;
+			for(int i = 0; i < grafo.getListaVecinos().size(); i ++) {
+				
+				for(Integer v: grafo.getListaVecinos().get(i)) {
+					
+					coor = grafo.devolverCoordenadasEntreAristas(i,v);
+					poligono = new MapPolygonImpl(coor);
+					poligono.getStyle().setColor(Color.RED);
+					mapa.addMapPolygon(poligono);
+					
+				}
+			}
 		}
 		
-	}
 	
 	private void crearFrame() {
 		frame = new JFrame();
@@ -117,7 +118,7 @@ public class InterfaceGrafo {
 		int i = 0;
 		
 		while (i<grafo.getVertices().size()) {
-			mapa.addMapMarker(new MapMarkerDot (new Coordinate(grafo.getLatitud(i), grafo.getLongitud(i))));
+			mapa.addMapMarker(new MapMarkerDot (i+"", new Coordinate(grafo.getLatitud(i), grafo.getLongitud(i))));
 			i++; 
 			
 		}
