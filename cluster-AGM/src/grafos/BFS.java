@@ -44,7 +44,7 @@ public class BFS {
 	}
 
 	 private static void agregarVecinosPendientes(Grafo g, int i) {
-		 for (int vertice : g.Vecinos(i)) {
+		 for (Integer vertice : g.Vecinos(i)) {
 			 if(marcados[vertice]==false && L.contains(vertice)==false);
 		 }
 	 }

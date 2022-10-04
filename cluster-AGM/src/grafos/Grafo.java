@@ -35,6 +35,7 @@ public class Grafo {
 		}
 
 		agregarCoordenadasPredeterminadas();
+		crearGrafoCompleto();
 
 	}
 
@@ -170,12 +171,13 @@ public class Grafo {
 	return listaDeVecinos;
 	}
 	
-
+	public ArrayList<Integer> Vecinos(int i) {
+		ArrayList<Integer> vecinos = new ArrayList<Integer>(listaDeVecinos.get(i).size()-1);
+		
+		for (Integer v: listaDeVecinos.get(i))
+			vecinos.add(v);
 	
-
-	public int[] Vecinos(int i) {
-		// Consulta un vertice y devuelve los vecinos
-		return null;
+		return vecinos;
 	}
 
 	public int vertices() {

@@ -13,6 +13,7 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
+import grafos.AGM;
 import grafos.Grafo;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -59,7 +60,6 @@ public class InterfaceGrafo {
 	 */
 	private void initialize() {
 		grafo = new Grafo(5);
-		grafo.crearGrafoCompleto();
 		crearFrame();
 		crearMapa();
 		agregarVertices();
@@ -80,7 +80,6 @@ public class InterfaceGrafo {
 				}
 			}
 		}
-		
 	
 	private void crearFrame() {
 		frame = new JFrame();
@@ -100,6 +99,12 @@ public class InterfaceGrafo {
 		mapa.setDisplayPosition(coor, 14);
 		mapa.setZoomContolsVisible(false);
 		
+		crearBtnAGM();
+		crearPoligono();
+		
+	}
+
+	private void crearBtnAGM() {
 		JButton btnNewButton = new JButton("AGM");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,8 +115,6 @@ public class InterfaceGrafo {
 		});
 		btnNewButton.setBounds(47, 435, 89, 23);
 		mapa.add(btnNewButton);
-		crearPoligono();
-		
 	}
 	
 	public void agregarVertices() {
