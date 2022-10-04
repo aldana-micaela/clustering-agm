@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.HashSet;
 import java.util.Scanner;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
