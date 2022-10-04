@@ -26,7 +26,7 @@ public class Grafo {
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
 
 		for (int i = 0; i < n; i++) {
-			vertices.add(new Vertice(i, null));
+			vertices.add(new Vertice(null));
 			listaDeVecinos.add(new HashSet<Integer>());
 		}
 
@@ -45,7 +45,7 @@ public class Grafo {
 			FileInputStream fis = new FileInputStream(file);
 			Scanner scanner = new Scanner(fis);
 			int i = 0;
-			while (scanner.hasNextDouble() && i < vertices.size()) {
+			while (scanner.hasNextDouble() && i < listaDeVecinos.size()) {
 				vertices.get(i).agregarCoordenada(scanner.nextDouble(), scanner.nextDouble());
 				i++;
 			}
@@ -61,7 +61,7 @@ public class Grafo {
 
 	public void agregarArista(int verticeInicio, int verticeDestino) {
 
-		if (verticeInicio >= vertices.size() || verticeDestino >= vertices.size()) {
+		if (verticeInicio >= listaDeVecinos.size() || verticeDestino >= listaDeVecinos.size()) {
 			throw new RuntimeException();
 		}
 
@@ -91,8 +91,8 @@ public class Grafo {
 	}
 
 	public void crearGrafoCompleto() {
-		for(int i=0; i<vertices.size();i++) {
-			for (int j =0; j<vertices.size(); j++) {
+		for(int i=0; i<listaDeVecinos.size();i++) {
+			for (int j =0; j<listaDeVecinos.size(); j++) {
 				agregarArista(i,j);
 			}
 		}

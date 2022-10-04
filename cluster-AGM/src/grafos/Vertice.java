@@ -3,12 +3,10 @@ import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 public class Vertice {
 	
-	int identificacionVertice;
 	Coordinate coordenada;
 	
-	public Vertice(int identificacion, Coordinate coordenada) {
+	public Vertice(Coordinate coordenada) {
 
-		this.identificacionVertice = identificacion;
 		this.coordenada= coordenada;
 		
 	}
@@ -28,9 +26,6 @@ public class Vertice {
 		coordenada= new Coordinate (lat, lon);
 	}
 	
-	public int getIdentificacionVertice() {
-		return identificacionVertice;
-	}
 	
 	public Coordinate getCoordenada() {
 		return coordenada;
@@ -38,7 +33,7 @@ public class Vertice {
 
 	@Override
 	public String toString() {
-		return "Vertice [Vertice=" + identificacionVertice + ", coordenada=" + coordenada + "]";
+		return "Coordenada=" + coordenada + "]";
 	}
 	
 	
