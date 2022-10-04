@@ -14,6 +14,9 @@ import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
 import grafos.Grafo;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InterfaceGrafo {
 
@@ -95,6 +98,17 @@ public class InterfaceGrafo {
 		frame.getContentPane().add(mapa);
 		mapa.setDisplayPosition(coor, 14);
 		mapa.setZoomContolsVisible(false);
+		
+		JButton btnNewButton = new JButton("AGM");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClusterAGM();
+				frame.setVisible(false);
+				
+			}
+		});
+		btnNewButton.setBounds(47, 435, 89, 23);
+		mapa.add(btnNewButton);
 		crearPoligono();
 		
 	}
@@ -108,6 +122,4 @@ public class InterfaceGrafo {
 			
 		}
 	}
-		
-
 }
