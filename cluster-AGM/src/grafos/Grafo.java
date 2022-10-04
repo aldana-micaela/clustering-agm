@@ -4,6 +4,7 @@ import java.io.File;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import java.util.HashSet;
@@ -14,16 +15,19 @@ public class Grafo {
 
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
-	private ArrayList<Arista> aristas;
+	//private ArrayList<Arista> aristas;
+	
+	private double [][] matrizDePesos;
 
 
-	int peso=100;
 
 	public Grafo(int n) {
 
 		vertices = new ArrayList<Vertice>();
-		aristas = new ArrayList<Arista>();
+	//	aristas = new ArrayList<Arista>();
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
+		
+		matrizDePesos= new double [n][n];
 
 		for (int i = 0; i < n; i++) {
 			vertices.add(new Vertice(null));
@@ -66,11 +70,14 @@ public class Grafo {
 		}
 
 		if (verticeInicio != verticeDestino) {
+			
 			listaDeVecinos.get(verticeInicio).add(verticeDestino);
 			listaDeVecinos.get(verticeDestino).add(verticeInicio);
 			
-			aristas.add(new Arista(verticeInicio, verticeDestino, peso));
-			peso -=5;
+			matrizDePesos[verticeInicio][verticeDestino]= distanciaDeEuclides(vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
+			matrizDePesos[verticeDestino][verticeInicio]= distanciaDeEuclides(vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
+			
+			//aristas.add(new Arista(verticeInicio, verticeDestino, peso));
 		}
 
 	}
@@ -98,23 +105,41 @@ public class Grafo {
 		}
 	}
 	
-	public ArrayList<Coordinate> devolverCoordenadasEntreAristas(Arista a) {
+	public ArrayList<Coordinate> devolverCoordenadasEntreAristas(int i, int j) {
 		
 		ArrayList<Coordinate> c= new ArrayList<Coordinate>();
-		int vI= a.verticeInicio;
-		int vD= a.verticeDestino;
+			
+			c.add(vertices.get(i).getCoordenada());
+			c.add(vertices.get(i).getCoordenada());
+			c.add(vertices.get(j).getCoordenada());
+			return c;
 		
-		c.add(vertices.get(vI).getCoordenada());
-		c.add(vertices.get(vI).getCoordenada());
-		c.add(vertices.get(vD).getCoordenada());
-		
-		return c;
 		
 	}
 	
-	public Arista devolverArista(int n) {
-		
-		return aristas.get(n);
+	
+	public double distanciaDeEuclides(Coordinate PuntoUno, Coordinate PuntoDos) {
+			// RAIZ( (x2-x1)^2 + (y2-y1)^2 )
+			BigDecimal x1 = new BigDecimal(PuntoUno.getLat());
+			BigDecimal y1 = new BigDecimal(PuntoUno.getLon());
+			BigDecimal x2 = new BigDecimal(PuntoDos.getLat());
+			BigDecimal y2 = new BigDecimal(PuntoDos.getLon());
+			BigDecimal exponenciar1 = new BigDecimal("0.0");
+			BigDecimal exponenciar2 = new BigDecimal("0.0");
+			BigDecimal resta1 = new BigDecimal("0.0");
+			BigDecimal resta2 = new BigDecimal("0.0");
+			BigDecimal sumar = new BigDecimal("0.0");
+			double resultado = 0;
+
+			resta1 = x2.subtract(x1);
+			resta2 = y2.subtract(y1);
+			exponenciar1 = resta1.multiply(resta1);
+			exponenciar2 = resta2.multiply(resta2);
+			sumar = exponenciar1.add(exponenciar2);
+			resultado = Math.sqrt(sumar.doubleValue());
+			
+
+			return resultado;
 		
 	}
 	
@@ -131,14 +156,22 @@ public class Grafo {
 	public ArrayList<Vertice> getVertices() {
 		return vertices;
 	}
+	
+
+	public double[][] getMatrizDePesos() {
+		return matrizDePesos;
+	}
+	
+	public double getPesoArista(int i, int j) {
+		return matrizDePesos[i][j];
+	}
 
 	public ArrayList<HashSet<Integer>> getListaVecinos(){
 	return listaDeVecinos;
 	}
 	
-	public ArrayList<Arista> getAristas() {
-		return aristas;
-	}
+
+	
 
 	public int[] Vecinos(int i) {
 		// Consulta un vertice y devuelve los vecinos
