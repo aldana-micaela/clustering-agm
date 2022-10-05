@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+
 import java.util.Set;
 
 import org.junit.Test;
@@ -9,7 +10,6 @@ import org.junit.Test;
 import grafos.Assert;
 import grafos.BFS;
 import grafos.Grafo;
-import grafos.Vertice;
 
 public class BFStest {
 	
