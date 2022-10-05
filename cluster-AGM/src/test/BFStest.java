@@ -41,6 +41,19 @@ public class BFStest {
 		
 		assertFalse(BFS.esConexo(grafo));
 	}
+	@Test
+	public void conexoTest2() {
+		grafo = inicializarGrafo();
+		grafo.crearGrafoCompleto();
+		grafo.eliminarArista(1, 0);
+		grafo.eliminarArista(1, 2);
+		//grafo.eliminarArista(1, 3);
+		grafo.eliminarArista(1, 4);
+		
+		assertTrue(BFS.esConexo(grafo));
+	}
+	
+	
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void VacioTest() {
