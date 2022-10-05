@@ -24,8 +24,6 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
-
 public class InterfaceGrafo {
 
 	private JFrame frame;
@@ -66,7 +64,7 @@ public class InterfaceGrafo {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		initialize();
 	}
 
@@ -78,14 +76,13 @@ public class InterfaceGrafo {
 		crearPanel();
 		crearMapa();
 		campoDeTexto();
+		btnOK();
 		crearBtnAGM();
 		crearBtnGrafoCompleto();
 		crearBtnX();
-		
-		
+
 	}
-	
-	
+
 	private void crearFrame() {
 		frame = new JFrame();
 		frame.getContentPane().setLayout(null);
@@ -95,57 +92,53 @@ public class InterfaceGrafo {
 		frame.setTitle("JMapViewer");
 		frame.setResizable(false);
 	}
-	
-	private void crearPanel () {
+
+	private void crearPanel() {
 		panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(10, 10, 604, 497);
 		panel.setLayout(null);
 		frame.getContentPane().add(panel);
 	}
-	
 
-	@SuppressWarnings("deprecation")
+	// @SuppressWarnings("deprecation")
 	private void crearMapa() {
-		
-		Coordinate coor= new Coordinate (-34.52848536990668, -58.706273075149376);
+
+		Coordinate coor = new Coordinate(-34.52848536990668, -58.706273075149376);
 		mapa = new JMapViewer();
 		mapa.setBounds(0, 0, 595, 487);
 		mapa.setDisplayPosition(coor, 14);
-		mapa.setZoomContolsVisible(false);
+		// mapa.setZoomContolsVisible(false);
 		panel.add(mapa);
-		
+
 	}
 
 	private void crearAristas() {
 		ArrayList<Coordinate> coor;
-		
-		for(int i = 0; i < grafo.getListaVecinos().size(); i ++) {
-			
-			for(Integer v: grafo.getListaVecinos().get(i)) {
-				
-				coor = grafo.devolverCoordenadasEntreAristas(i,v);
+
+		for (int i = 0; i < grafo.getListaVecinos().size(); i++) {
+
+			for (Integer v : grafo.getListaVecinos().get(i)) {
+
+				coor = grafo.devolverCoordenadasEntreAristas(i, v);
 				poligono = new MapPolygonImpl(coor);
 				poligono.getStyle().setColor(Color.RED);
 				mapa.addMapPolygon(poligono);
-				
+
 			}
 		}
 	}
-	
-	
+
 	private void campoDeTexto() {
 		textoCantVertices = new JLabel("Cantidad de vertices:");
 		textoCantVertices.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textoCantVertices.setBounds(617, 59, 132, 35);
 		frame.getContentPane().add(textoCantVertices);
-		
+
 		cantVertices = new JTextField();
 		cantVertices.setBounds(742, 64, 29, 28);
 		frame.getContentPane().add(cantVertices);
-		
-		
-		btnOK();
+
 		mensajeExcepcionCantidadVertices();
 	}
 
@@ -156,38 +149,45 @@ public class InterfaceGrafo {
 			btnOK.setBounds(779, 62, 45, 32);
 			frame.getContentPane().add(btnOK);
 			btnOK.addActionListener(new ActionListener() {
-				
+
 				public void actionPerformed(ActionEvent e) {
-					int cantidadV= Integer.parseInt(cantVertices.getText());
-					
-					if(cantVertices.getText().isEmpty() || cantidadV <=0) {
+					int cantidadV;
+					;
+
+					if (cantVertices.getText().isEmpty()) {
 						excepcion.setVisible(true);
 					} else {
-						excepcion.setVisible(false);
-						mapa.removeAllMapMarkers();
-						mapa.removeAllMapPolygons();
-						grafo = new Grafo(cantidadV);
-						agregarVertices();
-						btnGC.setEnabled(true);
-						btnX.setEnabled(true);
+						cantidadV = Integer.parseInt(cantVertices.getText());
+
+						if (cantidadV <= 0) {
+							excepcion.setVisible(true);
+						} else {
+							excepcion.setVisible(false);
+							mapa.removeAllMapMarkers();
+							mapa.removeAllMapPolygons();
+							grafo = new Grafo(cantidadV);
+							agregarVertices();
+							btnGC.setEnabled(true);
+							btnX.setEnabled(true);
+						}
 					}
+
 				}
 			});
 		}
 	}
-	
-	private void mensajeExcepcionCantidadVertices () {
-		
-			excepcion = new JLabel("Ingrese una cantidad mayor a 0.");
-			excepcion.setForeground(Color.RED);
-			excepcion.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			excepcion.setBounds(617, 10, 207, 36);
-			frame.getContentPane().add(excepcion);
-			excepcion.setVisible(false);
-			
-		
+
+	private void mensajeExcepcionCantidadVertices() {
+
+		excepcion = new JLabel("Ingrese una cantidad mayor a 0.");
+		excepcion.setForeground(Color.RED);
+		excepcion.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		excepcion.setBounds(617, 10, 207, 36);
+		frame.getContentPane().add(excepcion);
+		excepcion.setVisible(false);
+
 	}
-	
+
 	private void crearBtnGrafoCompleto() {
 
 		btnGC = new JButton("Crear grafo completo");
@@ -195,62 +195,61 @@ public class InterfaceGrafo {
 		btnGC.setBounds(617, 162, 141, 35);
 		frame.getContentPane().add(btnGC);
 		btnGC.setEnabled(false);
-		
+
 		btnGC.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				grafo.crearGrafoCompleto();
 				crearAristas();
 			}
 		});
 	}
-	
-	public void crearBtnX () {
-			btnX = new JButton("X");
-			btnX.setFont(new Font("Tahoma", Font.BOLD, 10));
-			btnX.setBackground(new Color(255, 69, 0));
-			btnX.setForeground(Color.BLACK);
-			btnX.setMnemonic('a');
-			btnX.setBounds(779, 162, 45, 35);
-			frame.getContentPane().add(btnX);
-			btnX.setEnabled(false);
-			
-			btnX.addActionListener(new ActionListener() {
-				
-				public void actionPerformed(ActionEvent e) {
-					mapa.removeAllMapPolygons();
-				}
-			});
-			
-			btnX.addMouseListener(new MouseAdapter() {
-				public void mouseEntered(MouseEvent e) {
-					btnX.setLayout(null);
-					btnX.setBackground(Color.RED);
+
+	public void crearBtnX() {
+		btnX = new JButton("X");
+		btnX.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnX.setBackground(new Color(255, 69, 0));
+		btnX.setForeground(Color.BLACK);
+		btnX.setMnemonic('a');
+		btnX.setBounds(779, 162, 45, 35);
+		frame.getContentPane().add(btnX);
+		btnX.setEnabled(false);
+
+		btnX.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				mapa.removeAllMapPolygons();
+			}
+		});
+
+		btnX.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnX.setLayout(null);
+				btnX.setBackground(Color.RED);
 			}
 		});
 	}
-	
+
 	private void crearBtnAGM() {
 		btnAGM = new JButton("AGM");
 		btnAGM.setBounds(617, 308, 141, 30);
 		frame.getContentPane().add(btnAGM);
 		btnAGM.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				new ClusterAGM();
 				frame.setVisible(false);
 			}
 		});
 	}
-	
+
 	public void agregarVertices() {
 		int i = 0;
-		while (i<grafo.getListaVecinos().size()) {
-			mapa.addMapMarker(new MapMarkerDot (i+"", new Coordinate(grafo.getLatitud(i), grafo.getLongitud(i))));
-			i++; 
-			
+		while (i < grafo.getListaVecinos().size()) {
+			mapa.addMapMarker(new MapMarkerDot(i + "", new Coordinate(grafo.getLatitud(i), grafo.getLongitud(i))));
+			i++;
+
 		}
 	}
-	
-	
+
 }
