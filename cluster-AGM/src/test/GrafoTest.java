@@ -3,8 +3,9 @@ package test;
 import static org.junit.Assert.*;
 
 
+
 import org.junit.*;
-import org.openstreetmap.gui.jmapviewer.Coordinate;
+//import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 import grafos.Grafo;
 
@@ -69,8 +70,8 @@ public class GrafoTest {
 	@Test
 	public void distanciaDeEuclidesTest() {
 		
-		Coordinate c1= new Coordinate(-34.52133782929332, -58.70068073272705);
-		Coordinate c2 = new Coordinate(-34.531237650076825, -58.7083625793457);
+//		Coordinate c1= new Coordinate(-34.52133782929332, -58.70068073272705);
+//		Coordinate c2 = new Coordinate(-34.531237650076825, -58.7083625793457);
 		
 		
 		//System.out.println(grafo.distanciaDeEuclides(c1, c2));
