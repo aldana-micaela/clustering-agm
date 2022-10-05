@@ -12,7 +12,7 @@ public class AGM {
 	public AGM(Grafo g) {
 		cantidadDeMarcados = 0;
 		grafo = g;
-		agm = new Grafo(grafo.vertices());
+		agm = new Grafo(grafo.getListaVecinos().size());
 		Marcados = new ArrayList<Integer>();
 		NoMarcados = new ArrayList<Integer>();
 		inicializar(); 
@@ -27,7 +27,7 @@ public class AGM {
 	}
 
 	private void cargarNoMarcados() {
-		for (int i = 0; i < grafo.vertices(); i++) {
+		for (int i = 0; i < grafo.getListaVecinos().size(); i++) {
 			NoMarcados.add(i);
 		}
 
@@ -36,7 +36,7 @@ public class AGM {
 //crea AGM
 	public void construirArbol() { //
 
-		while (cantidadDeMarcados < grafo.vertices()) {
+		while (cantidadDeMarcados < grafo.getListaVecinos().size()) {
 			buscarPesoMinimo();
 
 		}

@@ -13,7 +13,6 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
-import grafos.AGM;
 import grafos.Grafo;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -60,6 +59,7 @@ public class InterfaceGrafo {
 	 */
 	private void initialize() {
 		grafo = new Grafo(5);
+		grafo.crearGrafoCompleto();
 		crearFrame();
 		crearMapa();
 		agregarVertices();

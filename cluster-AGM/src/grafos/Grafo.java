@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
 import java.util.HashSet;
 import java.util.Scanner;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
@@ -15,16 +14,14 @@ public class Grafo {
 
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
-	//private ArrayList<Arista> aristas;
-	
 	private double [][] matrizDePesos;
 
-
-
 	public Grafo(int n) {
+		
+		if (n<=0)
+			throw new IllegalArgumentException("ingresar cantidad de vertices mayor a 1");
 
 		vertices = new ArrayList<Vertice>();
-	//	aristas = new ArrayList<Arista>();
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
 		
 		matrizDePesos= new double [n][n];
@@ -35,7 +32,6 @@ public class Grafo {
 		}
 
 		agregarCoordenadasPredeterminadas();
-		crearGrafoCompleto();
 
 	}
 
@@ -78,7 +74,6 @@ public class Grafo {
 			matrizDePesos[verticeInicio][verticeDestino]= distanciaDeEuclides(vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
 			matrizDePesos[verticeDestino][verticeInicio]= distanciaDeEuclides(vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
 			
-			//aristas.add(new Arista(verticeInicio, verticeDestino, peso));
 		}
 
 	}
@@ -178,10 +173,6 @@ public class Grafo {
 			vecinos.add(v);
 	
 		return vecinos;
-	}
-
-	public int vertices() {
-		return vertices.size();
 	}
 
 	public double verValor(Integer integer, Integer integer2) {
