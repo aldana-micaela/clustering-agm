@@ -179,6 +179,11 @@ public class Grafo {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	public int tamano() {
+		// TODO Auto-generated method stub
+		return vertices.size();
+	}
 	
 	
 	
