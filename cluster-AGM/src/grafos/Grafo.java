@@ -175,8 +175,11 @@ public class Grafo {
 		return vecinos;
 	}
 
-	public double verValor(Integer integer, Integer integer2) {
-		// TODO Auto-generated method stub
+	public double verValor(Integer i, Integer j) {
+		if (matrizDePesos[i][j] != 0) {
+			return matrizDePesos[i][j];
+		}
+
 		return 0;
 	}
 
