@@ -28,6 +28,8 @@ import javax.swing.JTextField;
 public class InterfaceGrafo {
 	private Grafo grafo;
 	private Grafo agm;
+	private Grafo cluster;
+	
 
 	private JFrame frame;
 	private JMapViewer mapa;
@@ -220,7 +222,6 @@ public class InterfaceGrafo {
 				grafo.crearGrafoCompleto();
 				crearAristas(grafo);
 				btnAGM.setEnabled(true);
-				btnCluster.setEnabled(true);
 				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
@@ -264,6 +265,7 @@ public class InterfaceGrafo {
 		btnCluster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mapa.removeAllMapPolygons();
+				cluster = ClusterAGM.cluster(agm, 2);
 				crearAristas(ClusterAGM.cluster(agm, 2));
 			}
 		});
@@ -298,6 +300,7 @@ public class InterfaceGrafo {
 					mapa.removeAllMapPolygons();
 					agm = AGM.subGrafoAGM(grafo, verticeInicio);
 					crearAristas(agm);
+					btnCluster.setEnabled(true);
 					//System.out.println(agm.getListaVecinos().toString());
 				}
 			}
