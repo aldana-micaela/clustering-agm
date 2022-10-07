@@ -208,7 +208,7 @@ public class InterfaceGrafo {
 
 	private void crearBtnGrafoCompleto() {
 
-		btnGC = new JButton("Crear grafo completo");
+		btnGC = new JButton("Grafo completo");
 		btnGC.setBackground(Color.BLACK);
 		btnGC.setBounds(624, 137, 141, 35);
 		frame.getContentPane().add(btnGC);
