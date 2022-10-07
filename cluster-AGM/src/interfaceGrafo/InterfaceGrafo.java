@@ -194,7 +194,7 @@ public class InterfaceGrafo {
 						mapa.removeAllMapPolygons();
 						grafo = new Grafo(cantidadV);
 						agregarVertices(grafo);
-						System.out.println(grafo.getListaVecinos().toString());
+						//System.out.println(grafo.getListaVecinos().toString());
 						btnGC.setEnabled(true);
 						btnX.setEnabled(true);
 
@@ -221,7 +221,7 @@ public class InterfaceGrafo {
 				crearAristas(grafo);
 				btnAGM.setEnabled(true);
 				btnCluster.setEnabled(true);
-				System.out.println(grafo.getListaVecinos().toString());
+				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -246,7 +246,7 @@ public class InterfaceGrafo {
 				grafo.removerAristas();
 				btnAGM.setEnabled(false);
 				btnCluster.setEnabled(false);
-				System.out.println(grafo.getListaVecinos().toString());
+				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -298,7 +298,7 @@ public class InterfaceGrafo {
 					mapa.removeAllMapPolygons();
 					agm = AGM.subGrafoAGM(grafo, verticeInicio);
 					crearAristas(agm);
-					System.out.println(agm.getListaVecinos().toString());
+					//System.out.println(agm.getListaVecinos().toString());
 				}
 			}
 		});

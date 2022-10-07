@@ -200,7 +200,6 @@ public class Grafo {
 
 
 	public ArrayList<HashSet<Integer>> getListaVecinos(){
-	
 	return listaDeVecinos;
 	}
 
