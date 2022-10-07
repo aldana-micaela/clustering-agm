@@ -19,12 +19,9 @@ public class BFS {
 			
 	}
 
+	public static HashSet<Integer> alcanzables(Grafo grafo, int origen) {
 		
-	
-
-	public static Set<Integer> alcanzables(Grafo grafo, int origen) {
-		
-		Set<Integer> ret = new HashSet<Integer>();
+		HashSet<Integer> ret = new HashSet<Integer>();
 		   inicializar(grafo,origen);
 		   
 		   while(L.size()> 0) {
@@ -41,14 +38,12 @@ public class BFS {
 		
 	}
 
-	 private static void agregarVecinosPendientes(Grafo g, int i) {
+	private static void agregarVecinosPendientes(Grafo g, int i) {
 		 for (Integer vertice : g.Vecinos(i)) 
 			 if(marcados[vertice]==false && L.contains(vertice)==false)
 		 		L.add(vertice);
 	 }
 	 
-	 
-
 	private static void inicializar(Grafo grafo, int origen) {
 		L = new ArrayList<Integer>();
 		L.add(origen);

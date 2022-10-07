@@ -1,92 +1,48 @@
 package grafos;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class AGM {
-	private Grafo grafo;
-	private Grafo agm;
-	private ArrayList<Integer> Marcados;
-	private ArrayList<Integer> NoMarcados;
-	private int cantidadDeMarcados;
-
-	public AGM(Grafo g) {
-		cantidadDeMarcados = 0;
-		grafo = g;
-		agm = new Grafo(grafo.getListaVecinos().size());
-		Marcados = new ArrayList<Integer>();
-		NoMarcados = new ArrayList<Integer>();
-		inicializar(); 
-
-	}
-
-	private void inicializar() {
-		int vertice = 0;
-		cargarNoMarcados();
-		Marcados.add(vertice); // marcamos el vertice 0 como comienzo del arbol
-		NoMarcados.remove(vertice); // sacamos de los no marcados al vertice de inicio
-	}
-
-	private void cargarNoMarcados() {
-		for (int i = 0; i < grafo.getListaVecinos().size(); i++) {
-			NoMarcados.add(i);
+	
+	static LinkedList<Integer> marcados= new LinkedList<Integer> ();
+	static Grafo grafoNuevo;
+		
+	
+	public static Grafo subGrafoAGM (Grafo g, int k) {
+		grafoNuevo= new Grafo(g.getListaVecinos().size());
+		marcados.add(k);
+		
+		int i = 0;
+		while(i<g.getListaVecinos().size()-1) {
+				elegirAristaMasBarata(g, marcados.getFirst());
+			i++;
 		}
-
+		marcados.removeAll(marcados);
+		return grafoNuevo;
 	}
 
-//crea AGM
-	public void construirArbol() { //
-
-		while (cantidadDeMarcados < grafo.getListaVecinos().size()) {
-			buscarPesoMinimo();
-
-		}
-
+	public static void elegirAristaMasBarata(Grafo g, int vertice){
+		
+			int vecinoMasBarato = getVecinoMasBaratoNOmarcado(g, vertice);
+			grafoNuevo.agregarArista(vertice, vecinoMasBarato );
+		 
 	}
-
-//alg de prim o intento xd
-	private void buscarPesoMinimo() { 
-		double peso = 0;
-
-		for (int marcado = 0; marcado < Marcados.size(); marcado++) {
-			for (int noMarcado = 0; noMarcado < NoMarcados.size(); noMarcado++) {
-				if (peso == 0) {
-					peso = grafo.verValor(Marcados.get(marcado), NoMarcados.get(noMarcado));
-				} else {
-
-					peso = Math.min(peso, grafo.verValor(Marcados.get(marcado), NoMarcados.get(noMarcado)));
-
+		 
+	public static int getVecinoMasBaratoNOmarcado(Grafo g, int vertice) {
+		double menorPeso= 100;
+		int vecino=0;
+		
+		for (Integer vecinoBarato : BFS.alcanzables(g, vertice)) {
+			if(!marcados.contains(vecinoBarato) && vertice != vecinoBarato) {
+				
+				if(g.getPesoArista(vertice, vecinoBarato) <= menorPeso) {
+					menorPeso=g.getPesoArista(vertice, vecinoBarato);
+					vecino=vecinoBarato;
 				}
-
-//				}
-
 			}
 		}
-		cantidadDeMarcados++;
-		agregarEnlaceDeMenorPeso(peso);
-
+		marcados.addFirst(vecino);
+		return vecino;
 	}
-
-	private void agregarEnlaceDeMenorPeso(double pesoMenorElegido) {
-
-		for (int marcado = 0; marcado < Marcados.size(); marcado++) {
-			for (int noMarcado = 0; noMarcado < NoMarcados.size(); noMarcado++) {
-
-				if (grafo.verValor(Marcados.get(marcado), NoMarcados.get(noMarcado)) == pesoMenorElegido) {
-					agm.agregarArista(Marcados.get(marcado), NoMarcados.get(noMarcado)); // me faltaria agregar el peso
-					Marcados.add(NoMarcados.get(noMarcado));
-					NoMarcados.remove(NoMarcados.get(noMarcado));
-
-				}
-
-			}
-		}
-	}
-
-
-
-	public Grafo dameGrafoAGM() {
-		return agm;
-	}
-
-
 }
+

@@ -4,7 +4,9 @@ package grafos;
 	import static org.junit.Assert.assertEquals;
 	import static org.junit.Assert.assertTrue;
 
-	import java.util.Set;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 	public class Assert
 	{
@@ -16,6 +18,7 @@ package grafos;
 			for(int i=0; i<esperado.length; ++i)
 				assertTrue( obtenido.contains(esperado[i]) );
 		}
+		
 
 
 }

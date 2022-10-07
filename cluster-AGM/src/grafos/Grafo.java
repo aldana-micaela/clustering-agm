@@ -15,6 +15,7 @@ public class Grafo {
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
 	private double [][] matrizDePesos;
+	private boolean esCompleto=false;
 
 	public Grafo(int n) {
 		
@@ -23,7 +24,6 @@ public class Grafo {
 
 		vertices = new ArrayList<Vertice>();
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
-		
 		matrizDePesos= new double [n][n];
 
 		for (int i = 0; i < n; i++) {
@@ -99,6 +99,7 @@ public class Grafo {
 				agregarArista(i,j);
 			}
 		}
+		esCompleto=true;
 	}
 	
 	public ArrayList<Coordinate> devolverCoordenadasEntreAristas(int i, int j) {
@@ -112,7 +113,6 @@ public class Grafo {
 		
 		
 	}
-	
 	
 	public double distanciaDeEuclides(Coordinate PuntoUno, Coordinate PuntoDos) {
 			// RAIZ( (x2-x1)^2 + (y2-y1)^2 )
@@ -139,6 +139,19 @@ public class Grafo {
 		
 	}
 	
+	public ArrayList<Integer> Vecinos(int i) {
+		ArrayList<Integer> vecinos = new ArrayList<Integer>(listaDeVecinos.get(i).size()-1);
+		
+		for (Integer v: listaDeVecinos.get(i))
+			vecinos.add(v);
+		
+		return vecinos;
+	}
+	
+	public boolean esCompleto() {
+		return esCompleto;
+	}
+	
 	public Double getLatitud(int i) {
 		return vertices.get(i).getLatitud();
 
@@ -149,40 +162,45 @@ public class Grafo {
 
 	}
 
-	public ArrayList<Vertice> getVertices() {
-		return vertices;
-	}
-	
-
-	public double[][] getMatrizDePesos() {
-		return matrizDePesos;
+	public void  removerAristas() {
+		for(int i=0; i<listaDeVecinos.size();i++) {
+			listaDeVecinos.get(i).removeAll(listaDeVecinos.get(i));
+			}
+		
+		esCompleto=false;
+		
 	}
 	
 	public double getPesoArista(int i, int j) {
 		return matrizDePesos[i][j];
 	}
+	
+	public int [] getAristaMasPesada() {
+		double peso=0;
+		int [] verticesMasPesados = new int[2];
+		
+		for(int i=0; i<listaDeVecinos.size();i++) {
+			
+			for (Integer v: getListaVecinos().get(i)) {
+			
+				if(getPesoArista(i,v) >= peso) {
+					
+					peso = getPesoArista(i,v);
+					verticesMasPesados[0]=i;
+					verticesMasPesados[1]=v;
+					
+				}
+				
+			}
+		}
+		
+		return verticesMasPesados;
+		
+	}
 
 	public ArrayList<HashSet<Integer>> getListaVecinos(){
 	return listaDeVecinos;
 	}
-	
-	public ArrayList<Integer> Vecinos(int i) {
-		ArrayList<Integer> vecinos = new ArrayList<Integer>(listaDeVecinos.get(i).size()-1);
-		
-		for (Integer v: listaDeVecinos.get(i))
-			vecinos.add(v);
-	
-		return vecinos;
-	}
-
-	public double verValor(Integer integer, Integer integer2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
-	
-	
 	
 	
 	
