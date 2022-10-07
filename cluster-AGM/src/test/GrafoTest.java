@@ -62,16 +62,6 @@ public class GrafoTest {
 		assertTrue(grafo.existeArista(0, 4));
 	}
 
-	@Test
-	public void getAristaMasPesada() {
-
-		grafo.crearGrafoCompleto();
-		
-		System.out.println(grafo.getAristaMasPesada()[0]);
-		System.out.println(grafo.getAristaMasPesada()[1]);
-		assertEquals(4, grafo.getAristaMasPesada()[0]);
-		assertEquals(0, grafo.getAristaMasPesada()[1]);
-	}
 
 	@Test
 	public void getPesosAristasTest() {

@@ -174,29 +174,6 @@ public class Grafo {
 	public double getPesoArista(int i, int j) {
 		return matrizDePesos[i][j];
 	}
-	
-	public int [] getAristaMasPesada() {
-		double peso=0;
-		int [] verticesMasPesados = new int[2];
-		
-		for(int i=0; i<listaDeVecinos.size();i++) {
-			
-			for (Integer v: getListaVecinos().get(i)) {
-			
-				if(getPesoArista(i,v) >= peso) {
-					
-					peso = getPesoArista(i,v);
-					verticesMasPesados[0]=i;
-					verticesMasPesados[1]=v;
-					
-				}
-				
-			}
-		}
-		
-		return verticesMasPesados;
-		
-	}
 
 
 	public ArrayList<HashSet<Integer>> getListaVecinos(){

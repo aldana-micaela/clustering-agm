@@ -266,7 +266,7 @@ public class InterfaceGrafo {
 			public void actionPerformed(ActionEvent e) {
 				mapa.removeAllMapPolygons();
 				cluster = ClusterAGM.cluster(agm, 2);
-				crearAristas(ClusterAGM.cluster(agm, 2));
+				crearAristas(cluster);
 			}
 		});
 	}
