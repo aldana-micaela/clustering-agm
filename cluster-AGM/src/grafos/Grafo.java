@@ -198,8 +198,22 @@ public class Grafo {
 		
 	}
 
+<<<<<<< HEAD
 	public ArrayList<HashSet<Integer>> getListaVecinos(){
 	return listaDeVecinos;
+=======
+	public double verValor(Integer i, Integer j) {
+		if (matrizDePesos[i][j] != 0) {
+			return matrizDePesos[i][j];
+		}
+
+		return 0;
+>>>>>>> e129466cea90b35f0d8e4937cc4610f5aeead742
+	}
+
+	public int tamano() {
+		// TODO Auto-generated method stub
+		return vertices.size();
 	}
 	
 	
