@@ -220,6 +220,7 @@ public class InterfaceGrafo {
 				grafo.crearGrafoCompleto();
 				crearAristas(grafo);
 				btnAGM.setEnabled(true);
+				btnCluster.setEnabled(true);
 				System.out.println(grafo.getListaVecinos().toString());
 
 			}
@@ -244,6 +245,7 @@ public class InterfaceGrafo {
 				mapa.removeAllMapPolygons();
 				grafo.removerAristas();
 				btnAGM.setEnabled(false);
+				btnCluster.setEnabled(false);
 				System.out.println(grafo.getListaVecinos().toString());
 
 			}
@@ -257,6 +259,7 @@ public class InterfaceGrafo {
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnCluster.setBounds(656, 415, 141, 30);
 		frame.getContentPane().add(btnCluster);
+		btnCluster.setEnabled(false);
 		
 		btnCluster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

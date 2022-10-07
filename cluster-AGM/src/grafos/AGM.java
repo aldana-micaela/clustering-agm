@@ -22,10 +22,8 @@ public class AGM {
 	}
 
 	public static void elegirAristaMasBarata(Grafo g, int vertice){
-		
 			int vecinoMasBarato = getVecinoMasBaratoNOmarcado(g, vertice);
 			grafoNuevo.agregarArista(vertice, vecinoMasBarato );
-		 
 	}
 		 
 	public static int getVecinoMasBaratoNOmarcado(Grafo g, int vertice) {
