@@ -18,31 +18,46 @@ public class AGMTest {
 
 	private Grafo grafo;
 	
-//	Grafo grafo;
-//	AGM agm;
-
-	private void inicializarGrafo() {
-		grafo = new Grafo(5);
-		grafo.crearGrafoCompleto();
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void subGrafoAgmTest() {
+		grafo = new Grafo(10);
+		
+		AGM.subGrafoAGM(grafo, 10);
+		
+		
 	}
-
-	@Test
-	public void cantidadAristasDiferentesTest() {
-		inicializarGrafo();
-		System.out.println(grafo.getListaVecinos().toString());
-
-		Grafo agm = AGM.subGrafoAGM(grafo, 1);
-		System.out.println(agm.getListaVecinos().toString());
-
-		//assertTrue(grafo.Vecinos(0) != agm.Vecinos(0));
-
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void subGrafoAgmTest2() {
+		grafo = new Grafo(10);
+		
+		AGM.subGrafoAGM(grafo, 20);
+		
+		
 	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void subGrafoAgmTest3() {
+		grafo = new Grafo(10);
+		
+		AGM.subGrafoAGM(grafo, -1);
+		
+	}
+	
+	
 
 	@Test
 	public void getVecinoMasBaratoNOmarcadoTest() {
-		inicializarGrafo();
+		grafo = new Grafo(21);
+		grafo.agregarArista(0, 20);
+		grafo.agregarArista(19, 20); //arista mas barata
+		
+		Grafo agm = AGM.subGrafoAGM(grafo,0);
+		assertTrue(agm.existeArista(19, 20));
+		assertFalse(agm.existeArista(0, 20));
+		assertTrue(agm.existeArista(19, 0));
+		
 
-	//	assertEquals(2, AGM.getVecinoMasBaratoNOmarcado(grafo, 1));
 	}
 
 

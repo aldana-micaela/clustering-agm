@@ -31,11 +31,6 @@ public class Vertice {
 		return coordenada;
 	}
 
-	@Override
-	public String toString() {
-		return "Coordenada=" + coordenada + "]";
-	}
-	
 	
 
 

@@ -51,7 +51,6 @@ public class GrafoTest {
 	public void crearGrafoCompletoTest() {
 		grafo.crearGrafoCompleto();
 
-		System.out.println(grafo.getListaVecinos().toString());
 		assertTrue(grafo.existeArista(1, 0));
 		assertTrue(grafo.existeArista(2, 0));
 		assertTrue(grafo.existeArista(3, 0));
@@ -66,9 +65,6 @@ public class GrafoTest {
 	@Test
 	public void getPesosAristasTest() {
 		grafo.crearGrafoCompleto();
-
-		System.out.println(grafo.getPesoArista(2, 4));
-		System.out.println(grafo.getPesoArista(4, 2));
 
 		assertTrue(grafo.getPesoArista(4, 2) == grafo.getPesoArista(2, 4));
 

@@ -183,6 +183,8 @@ public class InterfaceGrafo {
 						//System.out.println(grafo.getListaVecinos().toString());
 						btnGC.setEnabled(true);
 						btnX.setEnabled(true);
+						btnCluster.setEnabled(false);
+						btnAGM.setEnabled(false);
 
 					}
 				}
@@ -249,7 +251,7 @@ public class InterfaceGrafo {
 			public void actionPerformed(ActionEvent e) {
 				
 					mapa.removeAllMapPolygons();
-					cluster = ClusterAGM.cluster(agm, 2);
+					cluster = ClusterAGM.cluster(agm);
 					crearAristas(cluster);
 					cantidadCluster++;
 					textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);

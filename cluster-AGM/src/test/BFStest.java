@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.HashSet;
 import org.junit.Test;
+
+import grafos.AGM;
 import grafos.Assert;
 import grafos.BFS;
 import grafos.Grafo;
@@ -11,19 +13,12 @@ import grafos.Grafo;
 public class BFStest {
 
 	private Grafo grafo;
+	
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testNull() {
-		BFS.esConexo(null);
-
-	}
-
-	@Test
-	public void conexoTest() {
-		grafo = inicializarGrafo();
-		HashSet<Integer> alcanzables = BFS.alcanzables(grafo, 0);
-		int[] esperados = { 0, 1, 2, 3, 4 };
-		Assert.iguales(esperados, alcanzables);
+	private Grafo inicializarGrafo() {
+		grafo = new Grafo(5);
+		grafo.crearGrafoCompleto();
+		return grafo;
 	}
 
 	@Test
@@ -34,10 +29,10 @@ public class BFStest {
 		grafo.eliminarArista(1, 2);
 		grafo.eliminarArista(1, 3);
 		grafo.eliminarArista(1, 4);
-
+		
 		assertFalse(BFS.esConexo(grafo));
 	}
-
+	
 	@Test
 	public void conexoTest2() {
 		grafo = inicializarGrafo();
@@ -46,19 +41,47 @@ public class BFStest {
 		grafo.eliminarArista(1, 2);
 		// grafo.eliminarArista(1, 3);
 		grafo.eliminarArista(1, 4);
-
+		
 		assertTrue(BFS.esConexo(grafo));
 	}
-
+	
 	@Test(expected = IllegalArgumentException.class)
-	public void VacioTest() {
-		grafo = new Grafo(0);
+	public void testNull() {
+		BFS.esConexo(null);
+
 	}
 
-	private Grafo inicializarGrafo() {
-		grafo = new Grafo(5);
-		grafo.crearGrafoCompleto();
-		return grafo;
+	@Test
+	public void alcanzablesTest() {
+		grafo = inicializarGrafo();
+		HashSet<Integer> alcanzables = BFS.alcanzables(grafo, 0);
+		int[] esperados = { 0, 1, 2, 3, 4 };
+		Assert.iguales(esperados, alcanzables);
 	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void valorFueraDeRangoBordeEnAlcanzablesTest() {
+		grafo = new Grafo(10);
+		
+		BFS.alcanzables(grafo, 10);
+		
+	}
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void valorFueraDeRangoEnAlcanzablesTest() {
+		grafo = new Grafo(10);
+		
+		BFS.alcanzables(grafo, 20);
+		
+	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void valorNegativoEnAlcanzablesTest() {
+		grafo = new Grafo(10);
+		
+		BFS.alcanzables(grafo, -1);
+		
+	}
+
+	
 
 }
