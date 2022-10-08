@@ -17,12 +17,16 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 import grafos.AGM;
 import grafos.ClusterAGM;
 import grafos.Grafo;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
 
 
 public class InterfaceGrafo {
@@ -40,7 +44,7 @@ public class InterfaceGrafo {
 	private JTextField cantVertices;
 	private JLabel textoCantidadCluster;
 	int cantidadCluster;
-
+	
 	private JLabel excepcion;
 
 	private JButton btnOK;
@@ -124,15 +128,16 @@ public class InterfaceGrafo {
 		panel.add(mapa);
 
 	}
+	
 
 	private void campoDeTextoCantidadVerticeDelGrafo() {
 		textoCantVertices = new JLabel("Cantidad de vertices:");
 		textoCantVertices.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoCantVertices.setBounds(624, 108, 132, 35);
+		textoCantVertices.setBounds(624, 78, 132, 35);
 		frame.getContentPane().add(textoCantVertices);
 
 		cantVertices = new JTextField();
-		cantVertices.setBounds(740, 112, 29, 30);
+		cantVertices.setBounds(747, 82, 29, 30);
 		frame.getContentPane().add(cantVertices);
 
 		mensajeExcepcionCantidadVertices();
@@ -142,7 +147,7 @@ public class InterfaceGrafo {
 		cantidadCluster= 1;
 		textoCantidadCluster = new JLabel("Cantidad de Cluster: " + cantidadCluster);
 		textoCantidadCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoCantidadCluster.setBounds(624, 370, 173, 30);
+		textoCantidadCluster.setBounds(656, 353, 141, 30);
 		frame.getContentPane().add(textoCantidadCluster);
 	}
 
@@ -151,7 +156,7 @@ public class InterfaceGrafo {
 		excepcion = new JLabel("Ingrese una cantidad mayor a 0.");
 		excepcion.setForeground(Color.RED);
 		excepcion.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		excepcion.setBounds(624, 46, 207, 36);
+		excepcion.setBounds(624, 34, 207, 36);
 		frame.getContentPane().add(excepcion);
 		excepcion.setVisible(false);
 
@@ -160,7 +165,7 @@ public class InterfaceGrafo {
 	private void btnOK() {
 		btnOK = new JButton("Ok");
 		btnOK.setBackground(Color.BLACK);
-		btnOK.setBounds(779, 110, 45, 32);
+		btnOK.setBounds(786, 80, 45, 32);
 		frame.getContentPane().add(btnOK);
 		btnOK.addActionListener(new ActionListener() {
 
@@ -198,7 +203,7 @@ public class InterfaceGrafo {
 
 		btnGC = new JButton("Grafo completo");
 		btnGC.setBackground(Color.BLACK);
-		btnGC.setBounds(624, 178, 141, 35);
+		btnGC.setBounds(624, 154, 141, 35);
 		frame.getContentPane().add(btnGC);
 		btnGC.setEnabled(false);
 
@@ -221,7 +226,7 @@ public class InterfaceGrafo {
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnX.setBackground(new Color(255, 69, 0));
 		btnX.setForeground(Color.BLACK);
-		btnX.setBounds(779, 178, 45, 35);
+		btnX.setBounds(786, 154, 45, 35);
 		frame.getContentPane().add(btnX);
 		btnX.setEnabled(false);
 		btnX.addActionListener(new ActionListener() {
@@ -242,11 +247,10 @@ public class InterfaceGrafo {
 		btnCluster = new JButton("Cluster");
 		btnCluster.setBackground(Color.BLUE);
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnCluster.setBounds(656, 323, 141, 30);
+		btnCluster.setBounds(656, 303, 141, 30);
 		frame.getContentPane().add(btnCluster);
 		btnCluster.setEnabled(false);
-		
-		
+				
 		btnCluster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -267,7 +271,7 @@ public class InterfaceGrafo {
 	private void crearBtnAGM() {
 		btnAGM = new JButton("AGM");
 		btnAGM.setBackground(Color.BLUE);
-		btnAGM.setBounds(656, 265, 141, 30);
+		btnAGM.setBounds(656, 243, 141, 30);
 		frame.getContentPane().add(btnAGM);
 		btnAGM.setEnabled(false);
 

@@ -17,6 +17,7 @@ public class Grafo {
 	private double[][] matrizDePesos;
 	private boolean esCompleto;
 
+
 	public Grafo(int n) {
 		if (n <= 0)
 			throw new IllegalArgumentException("ingresar cantidad de vertices mayor a 1");
@@ -36,7 +37,7 @@ public class Grafo {
 	}
 
 	public void leerArchivoYAgregarCoordenadas() {
-		File file = new File("prueba.txt");
+		File file = new File("instancia1.txt");
 
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -171,5 +172,6 @@ public class Grafo {
 	public ArrayList<HashSet<Integer>> getListaVecinos() {
 		return listaDeVecinos;
 	}
+	
 
 }
