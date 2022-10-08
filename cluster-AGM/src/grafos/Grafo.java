@@ -50,8 +50,6 @@ public class Grafo {
 				vertices.get(i).agregarCoordenada(scanner.nextDouble(), scanner.nextDouble());
 				i++;
 			}
-
-			//System.out.println(getVertices().toString());
 			scanner.close();
 
 		} catch (FileNotFoundException e) {
@@ -110,7 +108,6 @@ public class Grafo {
 			c.add(vertices.get(i).getCoordenada());
 			c.add(vertices.get(j).getCoordenada());
 			return c;
-		
 		
 	}
 	

@@ -37,12 +37,11 @@ public class InterfaceGrafo {
 	private JPanel panel;
 
 	private JLabel textoCantVertices;
-	private JLabel textoVerticeInicio;
-	private JTextField campoTextoVerticeInicio;
 	private JTextField cantVertices;
+	private JLabel textoCantidadCluster;
+	int cantidadCluster;
 
 	private JLabel excepcion;
-	private JLabel excepcionVerticeInicio;
 
 	private JButton btnOK;
 	private JButton btnX;
@@ -87,8 +86,8 @@ public class InterfaceGrafo {
 		crearPanel();
 		crearMapa();
 
-		campoDeTextoVerticeInicioAGM();
 		campoDeTextoCantidadVerticeDelGrafo();
+		textoCantidadDeCluster();
 
 		btnOK();
 		crearBtnGrafoCompleto();
@@ -129,29 +128,22 @@ public class InterfaceGrafo {
 	private void campoDeTextoCantidadVerticeDelGrafo() {
 		textoCantVertices = new JLabel("Cantidad de vertices:");
 		textoCantVertices.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoCantVertices.setBounds(617, 59, 132, 35);
+		textoCantVertices.setBounds(624, 108, 132, 35);
 		frame.getContentPane().add(textoCantVertices);
 
 		cantVertices = new JTextField();
-		cantVertices.setBounds(742, 64, 29, 30);
+		cantVertices.setBounds(740, 112, 29, 30);
 		frame.getContentPane().add(cantVertices);
 
 		mensajeExcepcionCantidadVertices();
 	}
-
-	public void campoDeTextoVerticeInicioAGM() {
-
-		textoVerticeInicio = new JLabel("Vertice de inicio:");
-		textoVerticeInicio.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoVerticeInicio.setBounds(622, 236, 110, 35);
-		frame.getContentPane().add(textoVerticeInicio);
-
-		campoTextoVerticeInicio = new JTextField();
-		campoTextoVerticeInicio.setBounds(742, 236, 29, 30);
-		frame.getContentPane().add(campoTextoVerticeInicio);
-
-		mensajeExcepcionVerticeInicio();
-
+	
+	private void textoCantidadDeCluster() {
+		cantidadCluster= 1;
+		textoCantidadCluster = new JLabel("Cantidad de Cluster: " + cantidadCluster);
+		textoCantidadCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textoCantidadCluster.setBounds(624, 370, 173, 30);
+		frame.getContentPane().add(textoCantidadCluster);
 	}
 
 	private void mensajeExcepcionCantidadVertices() {
@@ -159,24 +151,16 @@ public class InterfaceGrafo {
 		excepcion = new JLabel("Ingrese una cantidad mayor a 0.");
 		excepcion.setForeground(Color.RED);
 		excepcion.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		excepcion.setBounds(617, 10, 207, 36);
+		excepcion.setBounds(624, 46, 207, 36);
 		frame.getContentPane().add(excepcion);
 		excepcion.setVisible(false);
 
 	}
 
-	private void mensajeExcepcionVerticeInicio() {
-		excepcionVerticeInicio = new JLabel();
-		excepcionVerticeInicio.setForeground(Color.RED);
-		excepcionVerticeInicio.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		excepcionVerticeInicio.setBounds(624, 202, 207, 30);
-		excepcionVerticeInicio.setVisible(false);
-	}
-
 	private void btnOK() {
 		btnOK = new JButton("Ok");
 		btnOK.setBackground(Color.BLACK);
-		btnOK.setBounds(779, 62, 45, 32);
+		btnOK.setBounds(779, 110, 45, 32);
 		frame.getContentPane().add(btnOK);
 		btnOK.addActionListener(new ActionListener() {
 
@@ -196,7 +180,7 @@ public class InterfaceGrafo {
 						mapa.removeAllMapPolygons();
 						grafo = new Grafo(cantidadV);
 						agregarVertices(grafo);
-						System.out.println(grafo.getListaVecinos().toString());
+						//System.out.println(grafo.getListaVecinos().toString());
 						btnGC.setEnabled(true);
 						btnX.setEnabled(true);
 
@@ -212,7 +196,7 @@ public class InterfaceGrafo {
 
 		btnGC = new JButton("Grafo completo");
 		btnGC.setBackground(Color.BLACK);
-		btnGC.setBounds(624, 137, 141, 35);
+		btnGC.setBounds(624, 178, 141, 35);
 		frame.getContentPane().add(btnGC);
 		btnGC.setEnabled(false);
 
@@ -222,7 +206,9 @@ public class InterfaceGrafo {
 				grafo.crearGrafoCompleto();
 				crearAristas(grafo);
 				btnAGM.setEnabled(true);
-				System.out.println(grafo.getListaVecinos().toString());
+				cantidadCluster=1;
+				textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
+				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -233,13 +219,9 @@ public class InterfaceGrafo {
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnX.setBackground(new Color(255, 69, 0));
 		btnX.setForeground(Color.BLACK);
-		btnX.setMnemonic('a');
-		btnX.setBounds(779, 137, 45, 35);
+		btnX.setBounds(779, 178, 45, 35);
 		frame.getContentPane().add(btnX);
 		btnX.setEnabled(false);
-
-		frame.getContentPane().add(excepcionVerticeInicio);
-
 		btnX.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -247,7 +229,7 @@ public class InterfaceGrafo {
 				grafo.removerAristas();
 				btnAGM.setEnabled(false);
 				btnCluster.setEnabled(false);
-				System.out.println(grafo.getListaVecinos().toString());
+				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -258,23 +240,32 @@ public class InterfaceGrafo {
 		btnCluster = new JButton("Cluster");
 		btnCluster.setBackground(Color.BLUE);
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnCluster.setBounds(656, 415, 141, 30);
+		btnCluster.setBounds(656, 323, 141, 30);
 		frame.getContentPane().add(btnCluster);
 		btnCluster.setEnabled(false);
 		
+		
 		btnCluster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mapa.removeAllMapPolygons();
-				cluster = ClusterAGM.cluster(agm, 2);
-				crearAristas(cluster);
+				
+					mapa.removeAllMapPolygons();
+					cluster = ClusterAGM.cluster(agm, 2);
+					crearAristas(cluster);
+					cantidadCluster++;
+					textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
+					if(cantidadCluster>=grafo.getListaVecinos().size()) 
+						btnCluster.setEnabled(false);
+					else 
+						btnCluster.setEnabled(true);
+				
 			}
 		});
 	}
 
 	private void crearBtnAGM() {
 		btnAGM = new JButton("AGM");
-		btnAGM.setBackground(Color.BLACK);
-		btnAGM.setBounds(656, 281, 141, 30);
+		btnAGM.setBackground(Color.BLUE);
+		btnAGM.setBounds(656, 265, 141, 30);
 		frame.getContentPane().add(btnAGM);
 		btnAGM.setEnabled(false);
 
@@ -282,28 +273,14 @@ public class InterfaceGrafo {
 
 			public void actionPerformed(ActionEvent e) {
 
-				if (campoTextoVerticeInicio.getText().isEmpty()) {
-					excepcionVerticeInicio.setText("Ingrese un vertice de inicio v\u00E1lido.");
-					excepcionVerticeInicio.setVisible(true);
-
-				}
-
-				else if (grafo.getListaVecinos().size() <= Integer.parseInt(campoTextoVerticeInicio.getText())
-						|| Integer.parseInt(campoTextoVerticeInicio.getText()) < 0) {
-
-					excepcionVerticeInicio.setText("Vertice fuera de rango.");
-					excepcionVerticeInicio.setVisible(true);
-
-				} else {
-					
-					int verticeInicio = Integer.parseInt(campoTextoVerticeInicio.getText());
-					excepcionVerticeInicio.setVisible(false);
 					mapa.removeAllMapPolygons();
-					agm = AGM.subGrafoAGM(grafo, verticeInicio);
+					agm = AGM.subGrafoAGM(grafo, 0);
 					crearAristas(agm);
 					btnCluster.setEnabled(true);
-					System.out.println(agm.getListaVecinos().toString());
-				}
+					cantidadCluster=1;
+					textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
+					//System.out.println(agm.getListaVecinos().toString());
+				
 			}
 		});
 	}
