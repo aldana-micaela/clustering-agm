@@ -1,6 +1,7 @@
 package interfaceGrafo;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ import grafos.AGM;
 import grafos.ClusterAGM;
 import grafos.Grafo;
 
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,8 +28,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
+
 
 
 public class InterfaceGrafo {
