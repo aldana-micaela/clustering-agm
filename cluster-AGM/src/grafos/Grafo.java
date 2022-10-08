@@ -6,11 +6,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Scanner;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 public class Grafo {
+
+	
 
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
@@ -55,6 +59,8 @@ public class Grafo {
 		}
 
 	}
+	
+	
 
 	public void agregarArista(int verticeInicio, int verticeDestino) {
 
@@ -172,6 +178,9 @@ public class Grafo {
 	public ArrayList<HashSet<Integer>> getListaVecinos() {
 		return listaDeVecinos;
 	}
+
+	
+
 	
 
 }

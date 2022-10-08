@@ -39,4 +39,9 @@ public class AGM {
 		marcados.add(vecino[1]);
 	}
 
+	
+	public static Grafo dameGrafo() {
+		return grafoNuevo;
+		
+	}
 }
