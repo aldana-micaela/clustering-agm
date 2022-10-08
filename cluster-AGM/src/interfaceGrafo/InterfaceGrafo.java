@@ -45,7 +45,7 @@ public class InterfaceGrafo {
 	private JLabel textoCantVertices;
 	private JTextField cantVertices;
 	private JLabel textoCantidadCluster;
-	private JLabel jLabelInfo;
+	
 	int cantidadCluster;
 	
 	private JLabel excepcion;
