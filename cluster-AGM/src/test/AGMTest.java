@@ -74,6 +74,7 @@ public class AGMTest {
 			grafo.agregarArista(2, 3);
 		}
 
+		
 		@Test
 		public void agmMismoTamanioGrafo() {
 			grafo = new Grafo(4);
@@ -90,16 +91,11 @@ public class AGMTest {
 			subgrafo.agregarArista(1, 3);
 
 			AGM agm = new AGM();
-			agm.subGrafoAGM(grafo, 0);
-			System.out.println(
-			grafo.getPesoArista(0, 1) );
-			System.out.println(grafo.getPesoArista(0, 2) );
-			System.out.println(grafo.getPesoArista(0, 3) );
-			System.out.println(grafo.getPesoArista(1, 2) );
-			System.out.println(grafo.getPesoArista(1, 3) );
-			System.out.println(grafo.getPesoArista(2, 3) );
+			AGM.subGrafoAGM(grafo, 0);
+		
 
-			assertEquals(subgrafo.getLongitud(0),agm.dameGrafo().getLongitud(0));
+			assertEquals(subgrafo.getLongitud(0),AGM.dameGrafo().getLongitud(0));
+
 
 		}
 

@@ -69,5 +69,7 @@ public class GrafoTest {
 		assertTrue(grafo.getPesoArista(4, 2) == grafo.getPesoArista(2, 4));
 
 	}
+	
+
 
 }
