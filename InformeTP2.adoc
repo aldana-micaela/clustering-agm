@@ -18,7 +18,7 @@ aristas iguales a la distancia euclídea entre los vértices, el algoritmo es el
 1. Calcular un árbol generador m´ınimo del grafo.
 2. Eliminar del árbol las aristas cuyos pesos sean mayores que los pesos de sus aristas
 vecinas.
-El paso 2 del algoritmo se puede repetir hasta obtener una cantidad predeterminada de
+El  algoritmo se puede repetir hasta obtener una cantidad predeterminada de
 clusters, o bien hasta que no haya aristas con peso significativamente distinto de sus aristas
 vecinas. Implementar una interfaz visual para mostrar los puntos de la instancia, ejecutar el
 algoritmo y mostrar sus resultados.
