@@ -1,0 +1,13 @@
+= Cluster AGM: Trabajo Practico 2 - Programación III
+:hardbreaks:
+:title-page:
+:numbered:
+:source-highlighter: coderay
+:tabsize: 4
+
+Autores:Aldana Micaela Filiberto <Aldana.filiberto17@gmail.com>; Juliana Camila Nuñez <julicamila14@gmail.com>;
+Docentes: Javier Marenco, Patricia Bagnes (Com-01);
+ v1, {docdate}.
+
+
+== Introducción:
