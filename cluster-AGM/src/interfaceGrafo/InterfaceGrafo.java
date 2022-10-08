@@ -23,6 +23,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -43,6 +45,7 @@ public class InterfaceGrafo {
 	private JLabel textoCantVertices;
 	private JTextField cantVertices;
 	private JLabel textoCantidadCluster;
+	private JLabel jLabelInfo;
 	int cantidadCluster;
 	
 	private JLabel excepcion;
@@ -52,6 +55,7 @@ public class InterfaceGrafo {
 	private JButton btnAGM;
 	private JButton btnGC;
 	private JButton btnCluster;
+	private JButton btnInfo;
 
 	/**
 	 * Launch the application.
@@ -98,6 +102,7 @@ public class InterfaceGrafo {
 		crearBtnAGM();
 		crearBtnX();
 		btnCluster();
+		crearBotonInfo();
 
 	}
 
@@ -247,7 +252,7 @@ public class InterfaceGrafo {
 		btnCluster = new JButton("Cluster");
 		btnCluster.setBackground(Color.BLUE);
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnCluster.setBounds(656, 303, 141, 30);
+		btnCluster.setBounds(615, 405, 141, 30);
 		frame.getContentPane().add(btnCluster);
 		btnCluster.setEnabled(false);
 				
@@ -264,6 +269,26 @@ public class InterfaceGrafo {
 					else 
 						btnCluster.setEnabled(true);
 				
+			}
+		});
+	}
+	private void crearBotonInfo() {
+		btnInfo = new JButton("Info");
+		btnInfo.setBackground(new Color(0, 0, 255));
+		btnInfo.setForeground(new Color(64, 0, 128));
+		btnInfo.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnInfo.setBounds(766, 396, 57, 47);
+		frame.getContentPane().add(btnInfo);
+		
+		btnInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				JOptionPane.showMessageDialog(frame,
+						"Información del botón Cluster:\n-"
+								+ "Para crear más clusters deberá presionar el botón Cluster");
+
+			
+
 			}
 		});
 	}
