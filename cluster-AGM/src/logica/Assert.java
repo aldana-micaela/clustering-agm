@@ -1,4 +1,4 @@
-package grafos;
+package logica;
 
 	
 	import static org.junit.Assert.assertEquals;

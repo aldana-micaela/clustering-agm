@@ -3,9 +3,9 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-import grafos.AGM;
-import grafos.ClusterAGM;
-import grafos.Grafo;
+import logica.AGM;
+import logica.ClusterAGM;
+import logica.Grafo;
 
 public class ClusterAGMTest {
 

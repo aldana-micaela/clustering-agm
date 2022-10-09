@@ -15,10 +15,9 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
-import grafos.AGM;
-import grafos.ClusterAGM;
-import grafos.Grafo;
-
+import logica.AGM;
+import logica.ClusterAGM;
+import logica.Grafo;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -31,7 +30,7 @@ import javax.swing.JTextField;
 
 
 
-public class InterfaceGrafo {
+public class Mapa {
 	private Grafo grafo;
 	private Grafo agm;
 	private Grafo cluster;
@@ -64,7 +63,7 @@ public class InterfaceGrafo {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceGrafo window = new InterfaceGrafo();
+					Mapa window = new Mapa();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -76,7 +75,7 @@ public class InterfaceGrafo {
 	/**
 	 * Create the application.
 	 */
-	public InterfaceGrafo() {
+	public Mapa() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {

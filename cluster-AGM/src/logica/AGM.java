@@ -1,4 +1,4 @@
-package grafos;
+package logica;
 
 import java.util.LinkedList;
 
@@ -44,4 +44,5 @@ public class AGM {
 		return grafoNuevo;
 		
 	}
+	
 }

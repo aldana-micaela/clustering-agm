@@ -3,17 +3,15 @@ package test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import grafos.AGM;
-import grafos.Grafo;
+
+import logica.AGM;
+import logica.Grafo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import grafos.AGM;
-import grafos.Grafo;
 
 public class AGMTest {
 
