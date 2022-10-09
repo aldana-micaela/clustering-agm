@@ -81,6 +81,9 @@ Vertice:: Esta clase contiene las coordenadas de un vertice. Sus métodos son:
 
 `void agregarCoordenada(double lat, double lon)` agrega las coordenadas con longitud y latitud.
 
-== Problemas y soluciones:
+== Problemas, decisiones y soluciones:
 
-Los primeros problemas que surgieron fue en el momento de implementar el grafo y relacionarlo con el peso de las aristas. En primer lugar, decidimos implementarlo con _Lista de vecinos_, por lo que la solución fue utilizar matriz de pesos.
+Para comezar con la implementacion del proyecto, decidimos comenzar por la clase Grafo y por pensar que representación de la clase Grafo seria mas conveniente, es decir, si debiamos usar la matriz de adyacencia o la lista de vecinos. Al tener en cuenta que unos de los puntos del enunciado del Trabajo Práctico 2 era implementar un AGM y que para implementar este AGM debiamos obtener los vecinos de los vertices constantemente, decidimos que seria mas conveniente utilizar la lista de vecinos en la representacion de la clase Grafo, ya que para obtener los vecinos es O(1). 
+Uno de los primeros problemas que surgieron en el momento de implementar la clase Grafo fue representar el peso de las aristas. En primer lugar, decidimos crear una Clase Arista para guardar su peso, pero esta solución no nos pareció muy adecuada ya que consideramos innecesario hacer una clase solo para guardar ese dato. Asique optamos por resolverlo con una matriz de pesos en la clase Grafo y entonces, cada vez que se agrega una arista, guardamos los pesos en la matriz con la distancia de Euclidés.
+Otro problema que surgió,
+
