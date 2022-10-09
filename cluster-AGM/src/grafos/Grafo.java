@@ -37,7 +37,7 @@ public class Grafo {
 	}
 
 	public void leerArchivoYAgregarCoordenadas() {
-		File file = new File("instancia1.txt");
+		File file = new File("instancia5.txt");
 
 		try {
 			FileInputStream fis = new FileInputStream(file);
