@@ -38,17 +38,17 @@ Para la implementación de esta aplicación se crearon los siguientes paquetes:
 == Descripcion de las clases de logica:
 Grafo::  grafo es la estructura que contiene los vértices y puede  agregar o eliminar aristas. Esta clase se implementó con _Lista de Vecinos_. Grafo contiene los siguientes métodos :
 
-` void leerArchivoYAgregarCoordenadas()` Este método lee y agrega coordenadas de un archivo determinado.
+`void leerArchivoYAgregarCoordenadas()` Este método lee y agrega coordenadas de un archivo determinado.
 
-` void agregarArista(int verticeInicio, int verticeDestino)` Este método agrega aristas y con la distancia de euclides le agrega su peso.
+`void agregarArista(int verticeInicio, int verticeDestino)` Este método agrega aristas y con la distancia de euclides le agrega su peso.
 
-` void eliminarArista(int verticeInicio, int verticeDestino)` Este método elimina la arista indicada.
+`void eliminarArista(int verticeInicio, int verticeDestino)` Este método elimina la arista indicada.
 
-` boolean existeArista(int vertice1, int vertice2)` Este método consulta si una arista determinada se encuentra en el grafo.
+`boolean existeArista(int vertice1, int vertice2)` Este método consulta si una arista determinada se encuentra en el grafo.
 
-` void crearGrafoCompleto()` Se encarga de agregar al grafo  todas sus aristas posibles.
+`void crearGrafoCompleto()` Se encarga de agregar al grafo  todas sus aristas posibles.
 
-` ArrayList<Coordinate> devolverCoordenadasEntreAristas(int i, int j)` Este método  nos brinda las coordenadas entre dos vértices.
+`ArrayList<Coordinate> devolverCoordenadasEntreAristas(int i, int j)` Este método  nos brinda las coordenadas entre dos vértices.
 
 `double distanciaDeEuclides(Coordinate PuntoUno, Coordinate PuntoDos)` Este método contiene la distancia de Euclides.
 
