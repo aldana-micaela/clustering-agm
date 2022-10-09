@@ -14,7 +14,7 @@ import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 public class Grafo {
 
-	private ArrayList<Vertice> vertices;
+	private ArrayList<Coordinate> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
 	private double[][] matrizDePesos;
 	private boolean esCompleto;
@@ -24,13 +24,13 @@ public class Grafo {
 		if (n <= 0)
 			throw new IllegalArgumentException("ingresar cantidad de vertices mayor a 1");
 		
-		vertices = new ArrayList<Vertice>();
+		vertices = new ArrayList<Coordinate>();
 		listaDeVecinos = new ArrayList<HashSet<Integer>>();
 		matrizDePesos = new double[n][n];
 		esCompleto = false;
 
 		for (int i = 0; i < n; i++) {
-			vertices.add(new Vertice(null));
+			vertices.add(new Coordinate(0, 0));
 			listaDeVecinos.add(new HashSet<Integer>());
 		}
 
@@ -47,7 +47,9 @@ public class Grafo {
 			
 			int i = 0;
 			while (scanner.hasNextDouble() && i < listaDeVecinos.size()) {
-				vertices.get(i).agregarCoordenada(scanner.nextDouble(), scanner.nextDouble());
+				vertices.get(i).setLat(scanner.nextDouble());
+				vertices.get(i).setLon(scanner.nextDouble());
+				//agregarCoordenada(scanner.nextDouble(), scanner.nextDouble());
 				i++;
 			}
 			scanner.close();
@@ -70,9 +72,9 @@ public class Grafo {
 			listaDeVecinos.get(verticeDestino).add(verticeInicio);
 
 			matrizDePesos[verticeInicio][verticeDestino] = distanciaDeEuclides(
-					vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
+					vertices.get(verticeInicio), vertices.get(verticeDestino));
 			matrizDePesos[verticeDestino][verticeInicio] = distanciaDeEuclides(
-					vertices.get(verticeInicio).getCoordenada(), vertices.get(verticeDestino).getCoordenada());
+					vertices.get(verticeInicio), vertices.get(verticeDestino));
 
 		}
 
@@ -106,9 +108,9 @@ public class Grafo {
 
 		ArrayList<Coordinate> c = new ArrayList<Coordinate>();
 
-		c.add(vertices.get(i).getCoordenada());
-		c.add(vertices.get(i).getCoordenada());
-		c.add(vertices.get(j).getCoordenada());
+		c.add(vertices.get(i));
+		c.add(vertices.get(i));
+		c.add(vertices.get(j));
 		return c;
 
 	}
@@ -151,12 +153,12 @@ public class Grafo {
 	}
 
 	public Double getLatitud(int i) {
-		return vertices.get(i).getLatitud();
+		return vertices.get(i).getLat();
 
 	}
 
 	public Double getLongitud(int i) {
-		return vertices.get(i).getLongitud();
+		return vertices.get(i).getLon();
 
 	}
 
@@ -176,8 +178,4 @@ public class Grafo {
 	}
 	
 	
-	
-
-	
-
 }
