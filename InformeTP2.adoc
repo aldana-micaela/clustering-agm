@@ -75,9 +75,12 @@ BFS:: Contiene el algoritmo necesario para recorrer el grafo. Contiene los sigui
 
 ClusterAGM::
 
-` int[] getAristaMasPesada(Grafo g)`
+`int[] getAristaMasPesada(Grafo g)`
 
 Vertice:: Esta clase contiene las coordenadas de un vertice. Sus métodos son:
 
 `void agregarCoordenada(double lat, double lon)` agrega las coordenadas con longitud y latitud.
 
+== Problemas y soluciones:
+
+Los primeros problemas que surgieron fue en el momento de implementar el grafo y relacionarlo con el peso de las aristas. En primer lugar, decidimos implementarlo con _Lista de vecinos_, por lo que la solución fue utilizar matriz de pesos.
