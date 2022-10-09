@@ -29,9 +29,14 @@ algoritmo y mostrar sus resultados.
 === Paquetes:
 Para la implementación de esta aplicación se crearon los siguientes paquetes:
 
-logica: contiene toda la lógica de la aplicación y  contiene la clase del algoritmo principal.
+*logica*: Contiene toda la lógica de la aplicación y  contiene la clase del algoritmo principal.
 
-interfaz: contiene la interfaz gráfica de la aplicación.
+*interfaz*: Contiene la interfaz gráfica de la aplicación.
 
-test: este paquete contiene los test de las clases que están en el paquete lógica.
+*test*: Este paquete contiene los test de las clases que están en el paquete lógica.
+
+== Descripcion de las clases de logica:
+Grafo::  grafo es la estructura que contiene los vértices y puede  agregar o eliminar aristas. Esta clase se implementó con _Lista de Vecinos_. Grafo contiene los siguientes métodos :
+
+´public void leerArchivoYAgregarCoordenadas()´
  
