@@ -171,9 +171,7 @@ public class Grafo {
 		esCompleto = false;
 	}
 
-	public double getPesoArista(int i, int j) {
-		return matrizDePesos[i][j];
-	}
+
 
 	public ArrayList<HashSet<Integer>> getListaVecinos() {
 		return listaDeVecinos;
