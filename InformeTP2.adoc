@@ -54,9 +54,30 @@ Grafo::  grafo es la estructura que contiene los vértices y puede  agregar o el
 
 `ArrayList<Integer> getVecinos(int i)` Dado un vétice nos da sus vecinos.
 
-` void removerAristas()` elimina las aristas.
+`void removerAristas()` elimina las aristas.
 
-``
+AGM:: contiene el algoritmo principal, árbol generador mínimo. En donde, dado un grafo, genera un subgrafo con su caminimo mínimo. AGM contiene los siguientes métodos:
 
-``
+`Grafo subGrafoAGM(Grafo g, int k)` Devuelve el subgrafo con el camino minimo.
+
+`void getParDeVerticesMasBarato(Grafo g)`
  
+
+BFS:: Contiene el algoritmo necesario para recorrer el grafo. Contiene los siguientes métodos:
+
+`boolean esConexo(Grafo g)` indica si un grafo es conexo.
+
+`HashSet<Integer> alcanzables(Grafo grafo, int origen)` devuelve los vértices  alcanzables  que tiene el vértice origin.
+
+`void agregarVecinosPendientes(Grafo g, int i)` recorre los vecinos del vértice i y si no fue marcado y si no está en L se los agrega.
+
+`void inicializar(Grafo grafo, int origen)` inicializa el arrayList L con el vértice origin e indica el índice de los marcados.
+
+ClusterAGM::
+
+` int[] getAristaMasPesada(Grafo g)`
+
+Vertice:: Esta clase contiene las coordenadas de un vertice. Sus métodos son:
+
+`void agregarCoordenada(double lat, double lon)` agrega las coordenadas con longitud y latitud.
+
