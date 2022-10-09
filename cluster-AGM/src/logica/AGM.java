@@ -1,4 +1,4 @@
-package grafos;
+package logica;
 
 import java.util.LinkedList;
 
@@ -39,4 +39,10 @@ public class AGM {
 		marcados.add(vecino[1]);
 	}
 
+	
+	public static Grafo dameGrafo() {
+		return grafoNuevo;
+		
+	}
+	
 }

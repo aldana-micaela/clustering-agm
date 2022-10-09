@@ -1,4 +1,4 @@
-package grafos;
+package logica;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 public class Vertice {

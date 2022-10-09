@@ -1,4 +1,4 @@
-package grafos;
+package logica;
 
 public class ClusterAGM {
 

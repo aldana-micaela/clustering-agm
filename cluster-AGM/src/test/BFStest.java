@@ -2,13 +2,13 @@ package test;
 
 import static org.junit.Assert.*;
 
+
 import java.util.HashSet;
 import org.junit.Test;
 
-import grafos.AGM;
-import grafos.Assert;
-import grafos.BFS;
-import grafos.Grafo;
+import logica.Assert;
+import logica.BFS;
+import logica.Grafo;
 
 public class BFStest {
 

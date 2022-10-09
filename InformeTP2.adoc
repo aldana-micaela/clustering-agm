@@ -1,0 +1,86 @@
+= Cluster AGM: Trabajo Practico 2 - Programación III
+:hardbreaks:
+:title-page:
+:numbered:
+:source-highlighter: coderay
+:tabsize: 4
+
+Autores:Aldana Micaela Filiberto <Aldana.filiberto17@gmail.com>; Juliana Camila Nuñez <julicamila14@gmail.com>;
+Docentes: Javier Marenco, Patricia Bagnes (Com-01);
+ v1, {docdate}.
+
+
+== Introducción:
+
+El objetivo del trabajo práctico es implementar una aplicación para realizar clustering utilizando el algoritmo propuesto por Charles Zahn en el artíıculo “Graph-theoretical methods
+for detecting and describing clusters” (IEEE Transactions on Computers 20-1, 1971). Dado
+un conjunto de puntos en el plano y un grafo completo con estos puntos y con pesos en las
+aristas iguales a la distancia euclídea entre los vértices, el algoritmo es el siguiente:
+   1. Calcular un árbol generador mínimo del grafo.
+   2. Eliminar del árbol las aristas cuyos pesos sean mayores que los pesos de sus aristas
+      vecinas.
+El  algoritmo se puede repetir hasta obtener una cantidad predeterminada de
+clusters, o bien hasta que no haya aristas con peso significativamente distinto de sus aristas
+vecinas. Implementar una interfaz visual para mostrar los puntos de la instancia, ejecutar el
+algoritmo y mostrar sus resultados.
+
+== Desarrollo:
+
+=== Paquetes:
+Para la implementación de esta aplicación se crearon los siguientes paquetes:
+
+*logica*: Contiene toda la lógica de la aplicación y  contiene la clase del algoritmo principal.
+
+*interfaz*: Contiene la interfaz gráfica de la aplicación.
+
+*test*: Este paquete contiene los test de las clases que están en el paquete lógica.
+
+== Descripcion de las clases de logica:
+Grafo::  grafo es la estructura que contiene los vértices y puede  agregar o eliminar aristas. Esta clase se implementó con _Lista de Vecinos_. Grafo contiene los siguientes métodos :
+
+`void leerArchivoYAgregarCoordenadas()` Este método lee y agrega coordenadas de un archivo determinado.
+
+`void agregarArista(int verticeInicio, int verticeDestino)` Este método agrega aristas y con la distancia de euclides le agrega su peso.
+
+`void eliminarArista(int verticeInicio, int verticeDestino)` Este método elimina la arista indicada.
+
+`boolean existeArista(int vertice1, int vertice2)` Este método consulta si una arista determinada se encuentra en el grafo.
+
+`void crearGrafoCompleto()` Se encarga de agregar al grafo  todas sus aristas posibles.
+
+`ArrayList<Coordinate> devolverCoordenadasEntreAristas(int i, int j)` Este método  nos brinda las coordenadas entre dos vértices.
+
+`double distanciaDeEuclides(Coordinate PuntoUno, Coordinate PuntoDos)` Este método contiene la distancia de Euclides.
+
+`ArrayList<Integer> getVecinos(int i)` Dado un vétice nos da sus vecinos.
+
+`void removerAristas()` elimina las aristas.
+
+AGM:: contiene el algoritmo principal, árbol generador mínimo. En donde, dado un grafo, genera un subgrafo con su caminimo mínimo. AGM contiene los siguientes métodos:
+
+`Grafo subGrafoAGM(Grafo g, int k)` Devuelve el subgrafo con el camino minimo.
+
+`void getParDeVerticesMasBarato(Grafo g)`
+ 
+
+BFS:: Contiene el algoritmo necesario para recorrer el grafo. Contiene los siguientes métodos:
+
+`boolean esConexo(Grafo g)` indica si un grafo es conexo.
+
+`HashSet<Integer> alcanzables(Grafo grafo, int origen)` devuelve los vértices  alcanzables  que tiene el vértice origin.
+
+`void agregarVecinosPendientes(Grafo g, int i)` recorre los vecinos del vértice i y si no fue marcado y si no está en L se los agrega.
+
+`void inicializar(Grafo grafo, int origen)` inicializa el arrayList L con el vértice origin e indica el índice de los marcados.
+
+ClusterAGM::
+
+`int[] getAristaMasPesada(Grafo g)`
+
+Vertice:: Esta clase contiene las coordenadas de un vertice. Sus métodos son:
+
+`void agregarCoordenada(double lat, double lon)` agrega las coordenadas con longitud y latitud.
+
+== Problemas y soluciones:
+
+Los primeros problemas que surgieron fue en el momento de implementar el grafo y relacionarlo con el peso de las aristas. En primer lugar, decidimos implementarlo con _Lista de vecinos_, por lo que la solución fue utilizar matriz de pesos.

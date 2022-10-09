@@ -1,6 +1,7 @@
 package interfaceGrafo;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -14,22 +15,22 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
-import grafos.AGM;
-import grafos.ClusterAGM;
-import grafos.Grafo;
+import logica.AGM;
+import logica.ClusterAGM;
+import logica.Grafo;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
 
 
-public class InterfaceGrafo {
+
+public class Mapa {
 	private Grafo grafo;
 	private Grafo agm;
 	private Grafo cluster;
@@ -43,6 +44,7 @@ public class InterfaceGrafo {
 	private JLabel textoCantVertices;
 	private JTextField cantVertices;
 	private JLabel textoCantidadCluster;
+	
 	int cantidadCluster;
 	
 	private JLabel excepcion;
@@ -52,6 +54,7 @@ public class InterfaceGrafo {
 	private JButton btnAGM;
 	private JButton btnGC;
 	private JButton btnCluster;
+	private JButton btnInfo;
 
 	/**
 	 * Launch the application.
@@ -60,7 +63,7 @@ public class InterfaceGrafo {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceGrafo window = new InterfaceGrafo();
+					Mapa window = new Mapa();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,7 +75,7 @@ public class InterfaceGrafo {
 	/**
 	 * Create the application.
 	 */
-	public InterfaceGrafo() {
+	public Mapa() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
@@ -98,13 +101,14 @@ public class InterfaceGrafo {
 		crearBtnAGM();
 		crearBtnX();
 		btnCluster();
+		crearBotonInfo();
 
 	}
 
 	private void crearFrame() {
 		frame = new JFrame();
 		frame.getContentPane().setLayout(null);
-		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frame.getContentPane().setBackground(new Color(128, 128, 255));
 		frame.setBounds(100, 100, 852, 545);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("JMapViewer");
@@ -113,7 +117,7 @@ public class InterfaceGrafo {
 
 	private void crearPanel() {
 		panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(new Color(128, 128, 255));
 		panel.setBounds(10, 10, 604, 497);
 		panel.setLayout(null);
 		frame.getContentPane().add(panel);
@@ -245,9 +249,9 @@ public class InterfaceGrafo {
 	
 	private void btnCluster() {
 		btnCluster = new JButton("Cluster");
-		btnCluster.setBackground(Color.BLUE);
+		btnCluster.setBackground(new Color(0, 0, 0));
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnCluster.setBounds(656, 303, 141, 30);
+		btnCluster.setBounds(615, 405, 141, 30);
 		frame.getContentPane().add(btnCluster);
 		btnCluster.setEnabled(false);
 				
@@ -267,10 +271,30 @@ public class InterfaceGrafo {
 			}
 		});
 	}
+	private void crearBotonInfo() {
+		btnInfo = new JButton("Info");
+		btnInfo.setBackground(new Color(0, 0, 0));
+		btnInfo.setForeground(new Color(64, 0, 128));
+		btnInfo.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnInfo.setBounds(766, 396, 57, 47);
+		frame.getContentPane().add(btnInfo);
+		
+		btnInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				JOptionPane.showMessageDialog(frame,
+						"Información del botón Cluster:\n-"
+								+ "Para crear más clusters deberá presionar el botón Cluster");
+
+			
+
+			}
+		});
+	}
 
 	private void crearBtnAGM() {
 		btnAGM = new JButton("AGM");
-		btnAGM.setBackground(Color.BLUE);
+		btnAGM.setBackground(new Color(0, 0, 0));
 		btnAGM.setBounds(656, 243, 141, 30);
 		frame.getContentPane().add(btnAGM);
 		btnAGM.setEnabled(false);

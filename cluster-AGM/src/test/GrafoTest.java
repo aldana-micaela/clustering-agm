@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-import grafos.Grafo;
+import logica.Grafo;
 
 public class GrafoTest {
 
@@ -69,5 +69,7 @@ public class GrafoTest {
 		assertTrue(grafo.getPesoArista(4, 2) == grafo.getPesoArista(2, 4));
 
 	}
+	
+
 
 }
