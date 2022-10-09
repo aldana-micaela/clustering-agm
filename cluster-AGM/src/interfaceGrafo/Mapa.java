@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.SystemColor;
 
 
 
@@ -108,8 +109,8 @@ public class Mapa {
 	private void crearFrame() {
 		frame = new JFrame();
 		frame.getContentPane().setLayout(null);
-		frame.getContentPane().setBackground(new Color(128, 128, 255));
-		frame.setBounds(100, 100, 852, 545);
+		frame.getContentPane().setBackground(new Color(153, 204, 204));
+		frame.setBounds(100, 100, 918, 560);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("JMapViewer");
 		frame.setResizable(false);
@@ -117,8 +118,7 @@ public class Mapa {
 
 	private void crearPanel() {
 		panel = new JPanel();
-		panel.setBackground(new Color(128, 128, 255));
-		panel.setBounds(10, 10, 604, 497);
+		panel.setBounds(10, 10, 632, 497);
 		panel.setLayout(null);
 		frame.getContentPane().add(panel);
 	}
@@ -127,7 +127,7 @@ public class Mapa {
 
 		Coordinate coor = new Coordinate(-34.52848536990668, -58.706273075149376);
 		mapa = new JMapViewer();
-		mapa.setBounds(0, 0, 595, 487);
+		mapa.setBounds(0, 0, 632, 497);
 		mapa.setDisplayPosition(coor, 14);
 		panel.add(mapa);
 
@@ -137,11 +137,11 @@ public class Mapa {
 	private void campoDeTextoCantidadVerticeDelGrafo() {
 		textoCantVertices = new JLabel("Cantidad de vertices:");
 		textoCantVertices.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoCantVertices.setBounds(624, 78, 132, 35);
+		textoCantVertices.setBounds(667, 90, 132, 35);
 		frame.getContentPane().add(textoCantVertices);
 
 		cantVertices = new JTextField();
-		cantVertices.setBounds(747, 82, 29, 30);
+		cantVertices.setBounds(809, 94, 29, 30);
 		frame.getContentPane().add(cantVertices);
 
 		mensajeExcepcionCantidadVertices();
@@ -151,16 +151,16 @@ public class Mapa {
 		cantidadCluster= 1;
 		textoCantidadCluster = new JLabel("Cantidad de Cluster: " + cantidadCluster);
 		textoCantidadCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textoCantidadCluster.setBounds(656, 353, 141, 30);
+		textoCantidadCluster.setBounds(697, 326, 141, 30);
 		frame.getContentPane().add(textoCantidadCluster);
 	}
 
 	private void mensajeExcepcionCantidadVertices() {
 
-		excepcion = new JLabel("Ingrese una cantidad mayor a 0.");
+		excepcion = new JLabel("Ingrese una cantidad mayor a 0 y menor a 67.");
 		excepcion.setForeground(Color.RED);
-		excepcion.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		excepcion.setBounds(624, 34, 207, 36);
+		excepcion.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		excepcion.setBounds(667, 40, 214, 36);
 		frame.getContentPane().add(excepcion);
 		excepcion.setVisible(false);
 
@@ -169,7 +169,7 @@ public class Mapa {
 	private void btnOK() {
 		btnOK = new JButton("Ok");
 		btnOK.setBackground(Color.BLACK);
-		btnOK.setBounds(786, 80, 45, 32);
+		btnOK.setBounds(848, 92, 45, 32);
 		frame.getContentPane().add(btnOK);
 		btnOK.addActionListener(new ActionListener() {
 
@@ -181,7 +181,7 @@ public class Mapa {
 				} else {
 					cantidadV = Integer.parseInt(cantVertices.getText());
 
-					if (cantidadV <= 0) {
+					if (cantidadV <= 0 || cantidadV >66) {
 						excepcion.setVisible(true);
 					} else {
 						excepcion.setVisible(false);
@@ -189,7 +189,6 @@ public class Mapa {
 						mapa.removeAllMapPolygons();
 						grafo = new Grafo(cantidadV);
 						agregarVertices(grafo);
-						//System.out.println(grafo.getListaVecinos().toString());
 						btnGC.setEnabled(true);
 						btnX.setEnabled(true);
 						btnCluster.setEnabled(false);
@@ -207,7 +206,7 @@ public class Mapa {
 
 		btnGC = new JButton("Grafo completo");
 		btnGC.setBackground(Color.BLACK);
-		btnGC.setBounds(624, 154, 141, 35);
+		btnGC.setBounds(697, 154, 141, 35);
 		frame.getContentPane().add(btnGC);
 		btnGC.setEnabled(false);
 
@@ -219,7 +218,6 @@ public class Mapa {
 				btnAGM.setEnabled(true);
 				cantidadCluster=1;
 				textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
-				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -230,7 +228,7 @@ public class Mapa {
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnX.setBackground(new Color(255, 69, 0));
 		btnX.setForeground(Color.BLACK);
-		btnX.setBounds(786, 154, 45, 35);
+		btnX.setBounds(848, 154, 45, 35);
 		frame.getContentPane().add(btnX);
 		btnX.setEnabled(false);
 		btnX.addActionListener(new ActionListener() {
@@ -240,7 +238,6 @@ public class Mapa {
 				grafo.removerAristas();
 				btnAGM.setEnabled(false);
 				btnCluster.setEnabled(false);
-				//System.out.println(grafo.getListaVecinos().toString());
 
 			}
 		});
@@ -251,7 +248,7 @@ public class Mapa {
 		btnCluster = new JButton("Cluster");
 		btnCluster.setBackground(new Color(0, 0, 0));
 		btnCluster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnCluster.setBounds(615, 405, 141, 30);
+		btnCluster.setBounds(697, 366, 141, 35);
 		frame.getContentPane().add(btnCluster);
 		btnCluster.setEnabled(false);
 				
@@ -272,11 +269,11 @@ public class Mapa {
 		});
 	}
 	private void crearBotonInfo() {
-		btnInfo = new JButton("Info");
-		btnInfo.setBackground(new Color(0, 0, 0));
-		btnInfo.setForeground(new Color(64, 0, 128));
-		btnInfo.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnInfo.setBounds(766, 396, 57, 47);
+		btnInfo = new JButton("?");
+		btnInfo.setBackground(SystemColor.infoText);
+		btnInfo.setForeground(Color.RED);
+		btnInfo.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		btnInfo.setBounds(856, 477, 40, 30);
 		frame.getContentPane().add(btnInfo);
 		
 		btnInfo.addActionListener(new ActionListener() {
@@ -295,7 +292,7 @@ public class Mapa {
 	private void crearBtnAGM() {
 		btnAGM = new JButton("AGM");
 		btnAGM.setBackground(new Color(0, 0, 0));
-		btnAGM.setBounds(656, 243, 141, 30);
+		btnAGM.setBounds(697, 244, 141, 35);
 		frame.getContentPane().add(btnAGM);
 		btnAGM.setEnabled(false);
 
@@ -309,7 +306,6 @@ public class Mapa {
 					btnCluster.setEnabled(true);
 					cantidadCluster=1;
 					textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
-					//System.out.println(agm.getListaVecinos().toString());
 				
 			}
 		});

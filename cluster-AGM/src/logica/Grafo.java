@@ -14,8 +14,6 @@ import org.openstreetmap.gui.jmapviewer.Coordinate;
 
 public class Grafo {
 
-	
-
 	private ArrayList<Vertice> vertices;
 	private ArrayList<HashSet<Integer>> listaDeVecinos;
 	private double[][] matrizDePesos;
@@ -41,7 +39,7 @@ public class Grafo {
 	}
 
 	public void leerArchivoYAgregarCoordenadas() {
-		File file = new File("instancia5.txt");
+		File file = new File("instancia1.txt");
 
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -60,8 +58,6 @@ public class Grafo {
 
 	}
 	
-	
-
 	public void agregarArista(int verticeInicio, int verticeDestino) {
 
 		if (verticeInicio >= listaDeVecinos.size() || verticeDestino >= listaDeVecinos.size()) {

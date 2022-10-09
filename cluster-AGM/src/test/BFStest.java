@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 import java.util.HashSet;
 import org.junit.Test;
 
-import logica.Assert;
 import logica.BFS;
 import logica.Grafo;
 
