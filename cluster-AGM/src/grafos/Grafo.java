@@ -178,15 +178,8 @@ public class Grafo {
 	public ArrayList<HashSet<Integer>> getListaVecinos() {
 		return listaDeVecinos;
 	}
-	public double valorDePesos() {
-		double pesototal=0;
-		for(int i=0; i< matrizDePesos.length; i++) {
-			for(int j=0; j< matrizDePesos[0].length; j++) {
-				pesototal+=matrizDePesos[i][j];
-			}
-		}
-		return pesototal;
-	}
+	
+	
 	
 
 	
