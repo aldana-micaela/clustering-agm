@@ -19,7 +19,6 @@ public class Grafo {
 	private double[][] matrizDePesos;
 	private boolean esCompleto;
 
-
 	public Grafo(int n) {
 		if (n <= 0)
 			throw new IllegalArgumentException("ingresar cantidad de vertices mayor a 1");
@@ -49,7 +48,6 @@ public class Grafo {
 			while (scanner.hasNextDouble() && i < listaDeVecinos.size()) {
 				vertices.get(i).setLat(scanner.nextDouble());
 				vertices.get(i).setLon(scanner.nextDouble());
-				//agregarCoordenada(scanner.nextDouble(), scanner.nextDouble());
 				i++;
 			}
 			scanner.close();
