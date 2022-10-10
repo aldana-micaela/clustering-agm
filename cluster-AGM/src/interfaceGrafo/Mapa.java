@@ -211,7 +211,6 @@ public class Mapa {
 		btnGC.setEnabled(false);
 
 		btnGC.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 				grafo.crearGrafoCompleto();
 				crearAristas(grafo);
