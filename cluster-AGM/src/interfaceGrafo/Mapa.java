@@ -216,6 +216,7 @@ public class Mapa {
 				grafo.crearGrafoCompleto();
 				crearAristas(grafo);
 				btnAGM.setEnabled(true);
+				btnCluster.setEnabled(false);
 				cantidadCluster=1;
 				textoCantidadCluster.setText("Cantidad de Cluster: " + cantidadCluster);
 

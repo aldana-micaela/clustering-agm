@@ -29,7 +29,6 @@ public class Grafo {
 		esCompleto = false;
 
 		for (int i = 0; i < n; i++) {
-			vertices.add(new Coordinate(0, 0));
 			listaDeVecinos.add(new HashSet<Integer>());
 		}
 
@@ -46,8 +45,7 @@ public class Grafo {
 			
 			int i = 0;
 			while (scanner.hasNextDouble() && i < listaDeVecinos.size()) {
-				vertices.get(i).setLat(scanner.nextDouble());
-				vertices.get(i).setLon(scanner.nextDouble());
+				vertices.add(new Coordinate(scanner.nextDouble(), scanner.nextDouble()));
 				i++;
 			}
 			scanner.close();
