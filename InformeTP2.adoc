@@ -77,9 +77,6 @@ ClusterAGM::
 
 `int[] getAristaMasPesada(Grafo g)`
 
-Vertice:: Esta clase contiene las coordenadas de un vertice. Sus métodos son:
-
-`void agregarCoordenada(double lat, double lon)` agrega las coordenadas con longitud y latitud.
 
 == Problemas, decisiones y soluciones:
 
