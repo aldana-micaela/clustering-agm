@@ -280,8 +280,9 @@ public class Mapa {
 			public void actionPerformed(ActionEvent e) {
 
 				JOptionPane.showMessageDialog(frame,
-						"Información del botón Cluster:\n-"
-								+ "Para crear más clusters deberá presionar el botón Cluster");
+						"Uso de la interfaz:\n"
+								+ "-Seleccione la cantidad de vertices dentro del rango [0-66]\n" +
+								"-Presione el boton 'Grafo completo', y luego genere el AGM.\n" + "-Por ultimo presione el boton 'Cluster' para crear tantos clusters como desee.");
 
 			
 
