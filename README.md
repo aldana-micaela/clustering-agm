@@ -32,7 +32,7 @@ Este proyecto implementa un sistema de **clustering basado en algoritmos de graf
 - **Eclipse** – Proyecto estructurado para abrir directamente desde Eclipse IDE.
 
 ## 🗂️ Estructura del proyecto
-
+<pre> ```
 cluster-AGM/
 │
 ├── src/
@@ -51,7 +51,7 @@ cluster-AGM/
 ├── instancia1.txt # Archivo de entrada de datos
 ├── JMapViewer.jar # Biblioteca para visualización de mapas
 └── .classpath, .project, .settings/ # Archivos del entorno Eclipse
-
+```</pre>
 
 ## 🔧 Cómo ejecutar
 
